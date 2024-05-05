@@ -20,7 +20,7 @@ abstract class Player{
     }
 }
 
-// while inheriting you need constructor i.e Downloader1(), but in interface no need Downloader1
+// while inheriting you need constructor i.e Downloader1(), but in interface no need Downloader1()
 // We can inherit only 1 class, so we cannot use player here, here comes interface in play to help us
 class VideoPlayer: Downloader1() {
     override fun playMusic() {

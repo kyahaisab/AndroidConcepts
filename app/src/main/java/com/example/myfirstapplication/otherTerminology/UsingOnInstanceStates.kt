@@ -1,8 +1,9 @@
 package com.example.myfirstapplication.otherTerminology
 
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import kotlinx.android.synthetic.main.activity_main.*
+import com.example.myfirstapplication.R
 
 // example of how you can use onSaveInstanceState(), onRestoreInstanceState(), and onBackPressed() in an Android activity
 /*
@@ -29,7 +30,8 @@ class MainActivity : AppCompatActivity() {
         }
 
         // Increase the counter when the button is clicked
-        buttonIncrease.setOnClickListener {
+        val buttonIncrease:View?=null // random fix, its button
+        buttonIncrease?.setOnClickListener {
             counter++
             updateCounterText()
         }

@@ -39,7 +39,7 @@ fun main(){
     virusProcessing.attack()*/
 
     // Delegation
-    val virusProcessing1=VirusProcessing(DownloadChinaVirus(), VirusAttackOnAmerica())
+    val virusProcessing1=VirusProcessing1(DownloadChinaVirus(), VirusAttackOnAmerica())
     virusProcessing1.downloadVirus()
     virusProcessing1.attack()
 }

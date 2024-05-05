@@ -1,20 +1,21 @@
 package com.example.myfirstapplication.kotlinOOP
 
-interface Downloader{
-    fun version(){
+interface Downloader {
+    fun version() {
         println("2.1.1")
     }
+
     // by default abstract, if not mentioned anything and no body given
     fun downloaderName()
 }
 
-interface Players{
+interface Players {
     fun play()
     fun playerName()
 }
 
 // NO need of paranthesis in inherited part
-class AudioVideoPlayer(private val play:String="Real"): Downloader,Players{
+class AudioVideoPlayer(private val play: String = "Real") : Downloader, Players {
     override fun downloaderName() {
         println("Realtek")
     }
@@ -28,8 +29,8 @@ class AudioVideoPlayer(private val play:String="Real"): Downloader,Players{
     }
 }
 
-fun main(){
-    val obj:AudioVideoPlayer=AudioVideoPlayer()
+fun main() {
+    val obj: AudioVideoPlayer = AudioVideoPlayer()
     obj.version()
     obj.downloaderName()
     obj.play()

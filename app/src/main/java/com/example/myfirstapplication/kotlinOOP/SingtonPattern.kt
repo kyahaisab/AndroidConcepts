@@ -11,6 +11,12 @@ class SingletonExperiment private constructor() {
             if (instance == null) instance = SingletonExperiment()
             return instance as SingletonExperiment
         }
+
+        //same as above
+        /*fun getInstance() = synchronized(this) {
+            if (instance == null) instance = Maanager()
+            instance
+        }*/
     }
 }
 
