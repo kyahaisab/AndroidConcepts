@@ -1,4 +1,4 @@
-package com.example.myfirstapplication.practiveCode
+package com.example.myfirstapplication.kotlinOOP
 
 sealed class Data {
     data class Success(val result: String) : Data()

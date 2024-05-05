@@ -1,4 +1,4 @@
-package com.example.myfirstapplication.practiveCode
+package com.example.myfirstapplication.kotlinOOP
 
 // Everything inside enum is object
 enum class Color {

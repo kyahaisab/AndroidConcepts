@@ -1,4 +1,4 @@
-package com.example.myfirstapplication.practiveCode
+package com.example.myfirstapplication.kotlinOOP
 
 // One canot have instance of abstract class
 abstract class BasicMachine(private var name: String){

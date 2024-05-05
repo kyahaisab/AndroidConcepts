@@ -1,4 +1,4 @@
-package com.example.myfirstapplication.practiveCode
+package com.example.myfirstapplication.kotlinOOP
 
 class ArrayUtils(private val array: Array<Int>) {
     fun findIndex(element: Int, callback: (index: Int, value: Int?) -> Unit) {

@@ -1,4 +1,4 @@
-package com.example.myfirstapplication.practiveCode
+package com.example.myfirstapplication.kotlinOOP
 
 data class Person(var name: String, var age: Int)
 

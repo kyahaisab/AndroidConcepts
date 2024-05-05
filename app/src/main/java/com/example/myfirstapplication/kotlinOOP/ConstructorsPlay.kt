@@ -1,4 +1,4 @@
-package com.example.myfirstapplication.practiveCode
+package com.example.myfirstapplication.kotlinOOP
 
 // This is primary constructor it can be private as well-> put private before constructor
 // If you are not giving any visibility then you can write class BoxPlay(...) simply

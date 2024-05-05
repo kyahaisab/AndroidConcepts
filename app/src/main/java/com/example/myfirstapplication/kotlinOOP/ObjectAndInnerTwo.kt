@@ -1,6 +1,4 @@
-package com.example.myfirstapplication.practiveCode
-
-import java.util.Objects
+package com.example.myfirstapplication.kotlinOOP
 
 interface Vehicle {
     fun onCarStarted(name: String)

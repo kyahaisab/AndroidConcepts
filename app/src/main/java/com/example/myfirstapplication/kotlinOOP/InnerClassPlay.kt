@@ -1,4 +1,4 @@
-package com.example.myfirstapplication.practiveCode
+package com.example.myfirstapplication.kotlinOOP
 
 class Animal(val color: String, val age: Int) {
     // This class is not able to access color and age of animal class

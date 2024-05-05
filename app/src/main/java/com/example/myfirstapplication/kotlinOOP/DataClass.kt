@@ -1,4 +1,4 @@
-package com.example.myfirstapplication.practiveCode
+package com.example.myfirstapplication.kotlinOOP
 
 // In java we have POJO classes, that are designed to store data only with getter and setters
 // In kotlin its simplified

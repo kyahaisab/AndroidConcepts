@@ -1,6 +1,5 @@
-package com.example.myfirstapplication.practiveCode
+package com.example.myfirstapplication.kotlinOOP
 
-import androidx.compose.ui.text.toUpperCase
 import kotlin.reflect.KProperty
 
 // Why delegation is needed

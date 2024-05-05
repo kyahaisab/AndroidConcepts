@@ -1,4 +1,4 @@
-package com.example.myfirstapplication.practiveCode
+package com.example.myfirstapplication.kotlinOOP
 
 // all classes in kotlina re final by default, so if you want to inherit this class make it open
 open class BaseCoffeeMachine(

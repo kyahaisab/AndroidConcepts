@@ -1,4 +1,4 @@
-package com.example.myfirstapplication.practiveCode
+package com.example.myfirstapplication.kotlinOOP
 
 // General convention is to name class with Capital letters
 // Though it seems like kotlin access values directly without getters and setters, but in reality it creates and use
