@@ -1,37 +1,21 @@
 package com.example.myfirstapplication
 
-import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
-import android.widget.TextView
 import androidx.activity.ComponentActivity
-import kotlin.concurrent.thread
+import com.example.myfirstapplication.coroutine.ThreadImplActivity
 
 class MainActivity : ComponentActivity() {
-    var startBool = false
-    private lateinit var buttonStart: Button
-    private lateinit var buttonStop: Button
-    private lateinit var text: TextView
+    private lateinit var startThreadButton: Button
 
-    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        buttonStart = findViewById(R.id.buttonStart)
-        buttonStop = findViewById(R.id.buttonStop)
-        text = findViewById(R.id.textViewPrint)
-
-        buttonStart.setOnClickListener {
-            startBool = true
-
-            while (startBool) {
-                Log.i("Thread", "Hello World")
-            }
-        }
-        buttonStop.setOnClickListener {
-            startBool = false
+        startThreadButton = findViewById(R.id.threadButton)
+        startThreadButton.setOnClickListener {
+            startActivity(Intent(applicationContext, ThreadImplActivity::class.java))
         }
     }
 }

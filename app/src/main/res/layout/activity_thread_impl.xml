@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".coroutine.ThreadImplActivity">
+
+    <Button
+        android:id="@+id/startThread"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:onClick="startThreadFunction"
+        android:text="Start Thread"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/stopThread"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:onClick="stopThreadFunction"
+        android:text="Stop Thread"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/startThread" />
+
+    <TextView
+        android:id="@+id/textViewCt"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:text="Hello TV"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/stopThread" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

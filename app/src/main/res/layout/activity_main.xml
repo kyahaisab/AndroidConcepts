@@ -5,24 +5,10 @@
     android:orientation="vertical">
 
     <Button
-        android:id="@+id/buttonStart"
+        android:id="@+id/threadButton"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:text="Start" />
+        android:text="See Thread Concepts" />
 
-    <Button
-        android:id="@+id/buttonStop"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:text="Stop" />
-
-    <TextView
-        android:id="@+id/textViewPrint"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_gravity="center"
-        android:text="Hello"
-        android:textAlignment="center"
-        android:textSize="20sp" />
 
 </LinearLayout>
