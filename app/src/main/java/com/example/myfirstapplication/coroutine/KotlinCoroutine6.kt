@@ -1,0 +1,56 @@
+package com.example.myfirstapplication.coroutine
+
+import kotlinx.coroutines.Deferred
+import kotlinx.coroutines.async
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.runBlocking
+import kotlin.system.measureTimeMillis
+
+/*
+// Sequential execution
+fun main() {
+    runBlocking {
+        println("Main program start: ${Thread.currentThread().name}")
+
+        val measureTime = measureTimeMillis {
+            val taskOne = taskOne()
+            val tasKTwo = taskTwo()
+            println("Result is: ${taskOne + tasKTwo}")
+        }
+        //So here you can note one thing.Within a coroutine which in our case is runBlocking,
+        // by default the methods are executed sequentially.
+        // Line 10,then 12-15, then 20, then 22 sequentially
+        println("Total time taken: $measureTime") // nearly 2 sec
+
+        println("Main program Completed: ${Thread.currentThread().name}")
+    }
+}*/
+
+private suspend fun taskOne(): String {
+    delay(1000)
+    return "Hello"
+}
+
+private suspend fun taskTwo(): String {
+    delay(1000)
+    return "World"
+}
+
+// Run parallel or concurrently, we can use launch, async, etc
+fun main() {
+    runBlocking {
+        println("Main program start: ${Thread.currentThread().name}")
+
+        val measureTime = measureTimeMillis {
+            val taskOne: Deferred<String> =
+                async { taskOne() } // run in other background coroutine c1
+            val tasKTwo: Deferred<String> =
+                async { taskTwo() } // run in other background coroutine c2
+            println("Result is: ${taskOne.await() + tasKTwo.await()}")
+        }
+
+        println("Total time taken: $measureTime") // nearly 1 sec, means both runs concurrently
+
+        println("Main program Completed: ${Thread.currentThread().name}")
+    }
+}
