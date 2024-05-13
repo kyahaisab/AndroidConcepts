@@ -13,6 +13,7 @@ import com.example.myfirstapplication.R
 import com.example.myfirstapplication.kotlinOOP.findIndex
 import kotlin.concurrent.thread
 
+// Source: https://www.youtube.com/watch?v=xYAXqgbc2LY&list=PLfuE3hOAeWhYspjqABfkf97AzW1XNXgjZ&index=6
 class ThreadImplActivity : AppCompatActivity() {
     private var stopLoop = true
     private lateinit var tvResult: TextView
@@ -58,9 +59,11 @@ class ThreadImplActivity : AppCompatActivity() {
                         // Always update tv on ui thread
                         // tvResult.text = counter.toString()
 
+                        // 2. Looper and handler
                         // So better way is to use looper and handler
                         // Main thread is in constant loop, so we put task(in form of runnable) from background thread to message queue
-                        // of UI thread using Handler
+                        // of UI thread using Handler. We create another thread from main thread , from the other thread we do some task and
+                        // update our main thread using handler and put task to main thread in form of runnable
                         handler.post(Runnable {
                             tvResult.text = counter.toString()
                         })
@@ -73,6 +76,7 @@ class ThreadImplActivity : AppCompatActivity() {
                     }
                 }
         */
+        // 3.
         // Updating UI thread from different thread is so frequent that android have created a separate API for this purpose
         // Async Task- to do long task without blocking main thread, it has 4 methods
 
@@ -104,6 +108,11 @@ class ThreadImplActivity : AppCompatActivity() {
                 customCounter++
                 publishProgress(counter)
                 Thread.sleep(1000)
+
+                // When async task is cancelled using myAsyncTask.cancel(true)
+                if (isCancelled) {
+                    break
+                }
             }
             return customCounter
         }
@@ -118,6 +127,11 @@ class ThreadImplActivity : AppCompatActivity() {
         override fun onProgressUpdate(vararg values: Int?) {
             super.onProgressUpdate(*values)
             tvResult.text = values.toString()
+        }
+
+        @Deprecated("Deprecated in Java")
+        override fun onCancelled() {
+            super.onCancelled()
         }
     }
 }

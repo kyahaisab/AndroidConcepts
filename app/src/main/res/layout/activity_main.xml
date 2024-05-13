@@ -7,8 +7,14 @@
     <Button
         android:id="@+id/threadButton"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="60dp"
         android:text="See Thread Concepts" />
+
+    <Button
+        android:id="@+id/customLooperAndHandler"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:text="Custome Looper Handler" />
 
 
 </LinearLayout>
