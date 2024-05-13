@@ -1,0 +1,14 @@
+Link: https://www.youtube.com/watch?v=lmRzRKIsn1g&t=156s
+
+1. First go through Thread Impl and looper and handlers
+2. When an app is running it has its main thread which handles light weight operation. Main thread in an application
+   is responsible for lightweight operations such as UI interactions, mathematical operations. Heavy operations such
+   as network activities, file operations, and database queries are offloaded to background threads to avoid blocking
+   the main thread. Too many thread can also crash your aap with out of memory.Because creating threads is very very expensive.
+   And if you create more and more threads, then there would be a time when your device will run out of memory.
+   And eventually once again your app will shut down.
+3. So say hello to coroutines.When you use coroutines then you don't have to create so many threads for each operation.
+   Instead You can have just one background thread And on this thread, you can launch coroutines.
+   Such as launch a coroutine to perform File UploadLaunch another coroutine on the same background thread
+   to perform some network operations. Like threads, coroutines can run in parallel, wait for each other to finish,
+   and even communicate with each other.But remember coroutines are not threads.
