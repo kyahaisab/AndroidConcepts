@@ -2,3 +2,6 @@ SimplifiedCoding by Bilal Khan OOP
 
 Proceed with:
 see Belel list, the way he proceeded in his videos
+Order:
+class obj-> visibility modifier-> constructor->inheritance->abstract->interface->Inner class and Anonymous class->Lambda
+delegation-> companion object ->generics ->data class->enum->sealed class->extension->scope fun->collection->exception handling
