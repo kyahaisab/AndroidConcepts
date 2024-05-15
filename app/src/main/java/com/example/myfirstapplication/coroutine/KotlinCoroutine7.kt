@@ -20,7 +20,8 @@ fun main() {
             val tasKTwo: Deferred<String> =
                 async(start = CoroutineStart.LAZY) { taskTwo() } // run in other background coroutine c2
 
-            //println("Result is: ${taskOne.await() + tasKTwo.await()}") // it will take 2023 millis if this line is exe, else 30 millis
+            println("Result is: ${taskOne.await() + tasKTwo.await()}") // it will take 2023 millis if this line is exe, else 30 millis, if we do not use this lazy, then
+            // it will take 1023 sec only
         }
         println("Time taken: $time")
 

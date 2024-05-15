@@ -41,8 +41,8 @@ fun main() { // Executes in main thread and statement inside it also runs in mai
     }
     /*
     Summary:
-    launch function creates a coroutine that does not block the main thread.
-    But runBlocking creates a coroutine that blocks the main thread.
+    launch function creates a coroutine that does not block the current thread main thread.
+    But runBlocking creates a coroutine that blocks the current thread main thread.
      */
 
     /*
