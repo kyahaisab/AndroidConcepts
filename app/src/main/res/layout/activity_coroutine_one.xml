@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".coroutineAmit.CoroutineOne">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <Button
+                android:id="@+id/testCoroutine"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:text="Test Coroutine"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:id="@+id/testCoroutineWithMain"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:text="Test Coroutine with main"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/testCoroutine" />
+
+            <Button
+                android:id="@+id/testCoroutineWithMainImmediate"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:text="Test Coroutine With Main Immediate"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/testCoroutineWithMain" />
+
+            <Button
+                android:id="@+id/testCoroutineEverything"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:text="test coroutine everything"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/testCoroutineWithMainImmediate" />
+
+            <Button
+                android:id="@+id/usingGlobalScope"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:text="Using global scope"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/testCoroutineEverything" />
+
+
+            <Button
+                android:id="@+id/usingMyActivityScope"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:text="using my activity scope"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/usingGlobalScope" />
+
+            <Button
+                android:id="@+id/globalScopeInsideLifecycleScope"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:text="global scope inside lifecycle scope"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/usingMyActivityScope" />
+
+            <Button
+                android:id="@+id/launchInsideLifecycleScope"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:text="launch inside lifecycle scope"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/globalScopeInsideLifecycleScope" />
+
+            <Button
+                android:id="@+id/twoLaunches"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:text="Two launches"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/launchInsideLifecycleScope" />
+
+            <Button
+                android:id="@+id/twoWithContextInsideLifecycleScope"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:text="two with context inside lifecycle scope"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/twoLaunches" />
+
+            <Button
+                android:id="@+id/twoAsyncInsideLifecycleScope"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:text="two async inside lifecycle scope"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/twoWithContextInsideLifecycleScope" />
+
+            <Button
+                android:id="@+id/twoTasks"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:text="Two tasks"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/twoAsyncInsideLifecycleScope" />
+
+            <Button
+                android:id="@+id/parentAndChildTaskCancel"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:text="parent and child task cancel"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/twoTasks" />
+
+            <Button
+                android:id="@+id/parentAndChildTaskCancelIsActive"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:text="parent and child task cancel is active"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/parentAndChildTaskCancel" />
+
+            <Button
+                android:id="@+id/lifecycleScopeHandlerWithException"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:text="Lifecycle scope handler with exception"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/parentAndChildTaskCancelIsActive" />
+
+            <Button
+                android:id="@+id/lifecycleScopeWithHandler"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:text="lifecycle scope with handler"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/lifecycleScopeHandlerWithException" />
+
+            <Button
+                android:id="@+id/myActivityScopeWithHandlerException"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:text="My Activity scope with handler exception"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/lifecycleScopeWithHandler" />
+
+            <Button
+                android:id="@+id/myActivityScopeWithHandler"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:text="My Activity scope with handler"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/myActivityScopeWithHandlerException" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
