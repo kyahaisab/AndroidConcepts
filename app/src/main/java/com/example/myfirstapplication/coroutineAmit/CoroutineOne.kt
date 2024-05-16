@@ -126,6 +126,18 @@ class CoroutineOne : AppCompatActivity() {
         binding.myActivityScopeWithHandler.click {
             myActivityScopeWithHandler()
         }
+
+        binding.exceptionInLaunchBlock.click {
+            exceptionInLaunchBlock()
+        }
+
+        binding.exceptionInAsyncBlock.click {
+            exceptionInAsyncBlock()
+        }
+
+        binding.exceptionInAsyncBlockWithAwait.click {
+            exceptionInAsyncBlockWithAwait()
+        }
     }
 
     private fun testCoroutine() {
@@ -455,12 +467,14 @@ class CoroutineOne : AppCompatActivity() {
     }
 
     private fun exceptionInLaunchBlock() {
+        // It will through exception and activity closes unless you handel it by: launch(exceptionHandler)
         lifecycleScope.launch {
             doSomethingAndThrowException()
         }
     }
 
     private fun exceptionInAsyncBlock() {
+        // Exception is thrown but it is contained in it and activity will not crash unless unless we use await
         lifecycleScope.async {
             doSomethingAndThrowException()
         }
@@ -470,4 +484,20 @@ class CoroutineOne : AppCompatActivity() {
         throw Exception("Some Exception")
     }
 
+    private fun exceptionInAsyncBlockWithAwait() {
+        lifecycleScope.launch {
+            val deferred = lifecycleScope.async(Dispatchers.Default) {
+                doSomethingAndThrowException()
+                return@async 10
+            }
+            try {
+                val result = deferred.await()
+            } catch (e: Exception) {
+                Log.d(TAG, "Exception Handler: $e")
+            }
+        }
+    }
+
+    //NOTE: difference between launch and async is one returns job and other returns deferred job(we can get result)
+    // NOTE: make short bullet points about every topic, so that they are easy to revise
 }

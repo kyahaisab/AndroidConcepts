@@ -163,6 +163,29 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/myActivityScopeWithHandlerException" />
 
+            <Button
+                android:id="@+id/exceptionInLaunchBlock"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:text="Exception In Launch Block"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/myActivityScopeWithHandler" />
+
+            <Button
+                android:id="@+id/exceptionInAsyncBlock"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:text="Exception in Async Block"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/exceptionInLaunchBlock" />
+
+            <Button
+                android:id="@+id/exceptionInAsyncBlockWithAwait"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:text="Exception in Async Block With Await"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/exceptionInAsyncBlock" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
