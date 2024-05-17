@@ -1,0 +1,14 @@
+// Source link: https://www.youtube.com/watch?v=cg0yCHW2Keg&list=PLRKyZvuMYSIPwjYw1bt_7u7nEwe6vATQd&index=2
+
+Flow: AstonMartinCar -> normal flow
+
+# Dagger 2
+Dagger will behave as a system for us to create required objects.
+Dagger will help us inject these objects.
+Dagger will manage the lifetime of the objects.
+Dagger will help us write manageable code.
+
+Concept -
+• Consumer -> (@lnject)
+• Producer -> (@Module, @Provides, @Binds)
+• Connecter -> (@Component)

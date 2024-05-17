@@ -1,9 +1,5 @@
 package com.example.myfirstapplication.di
 
-import androidx.compose.runtime.traceEventStart
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
 import kotlin.concurrent.thread
 
 class AstonMartinCar {
@@ -35,6 +31,15 @@ class LamborghiniCar(private val alloyWheels: AlloyWheels, private val engineGT4
     }
 }
 
+// This is to demonstrate field injection
+class MaserratiCar {
+    public lateinit var engine: Engine
+
+    fun drivingCar() {
+        (engine as EngineGT49).startEngine()
+    }
+}
+
 class AlloyWheels {
     fun releaseBreaks() {
         println("Rolling...")
@@ -55,12 +60,17 @@ fun main() {
     val astonMartinCar = AstonMartinCar().also {
         it.drivingCar()
     }
+    // This is constructor injection
     val lamborghiniCar = LamborghiniCar(AlloyWheels(), EngineGT49()).let {
         it.drivingCar()
         it
     }
+
+    val MaseratiCar = MaserratiCar().run {
+        engine = EngineGT49() // This is called field injection
+        this
+    }
+    MaseratiCar.drivingCar()
 }
 
-interface Engine {
-
-}
+interface Engine
