@@ -8,11 +8,13 @@ import androidx.activity.ComponentActivity
 import com.example.myfirstapplication.coroutine.CustomLooperHandlerActivity
 import com.example.myfirstapplication.coroutine.ThreadImplActivity
 import com.example.myfirstapplication.coroutineAmit.CoroutineOne
+import com.example.myfirstapplication.di.BaseDIActivity
 
 class MainActivity : ComponentActivity() {
     private lateinit var startThreadButton: Button
     private lateinit var looperHandlerButton: Button
     private lateinit var learnCoroutineButton: Button
+    private lateinit var diTestingButton: Button
 
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,6 +24,7 @@ class MainActivity : ComponentActivity() {
         startThreadButton = findViewById(R.id.threadButton)
         looperHandlerButton = findViewById(R.id.customLooperAndHandler)
         learnCoroutineButton = findViewById(R.id.coroutineTesting)
+        diTestingButton = findViewById(R.id.diTesting)
 
         setViews()
     }
@@ -35,6 +38,9 @@ class MainActivity : ComponentActivity() {
         }
         learnCoroutineButton.setOnClickListener {
             startActivity(Intent(this, CoroutineOne::class.java))
+        }
+        diTestingButton.click {
+            startActivity(Intent(this, BaseDIActivity::class.java))
         }
     }
 }

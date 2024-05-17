@@ -1,6 +1,8 @@
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
+
+    kotlin("kapt") // Kotlin annotation processing tool
 }
 
 android {
@@ -71,4 +73,13 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+
+
+    implementation("com.google.dagger:dagger:2.40.5")
+    // Dagger 2 compiler for code generation
+    kapt("com.google.dagger:dagger-compiler:2.40.5")
+    // (Optional) Dagger 2 Android support
+    implementation("com.google.dagger:dagger-android:2.40.5")
+    implementation("com.google.dagger:dagger-android-support:2.40.5") // if you use Android support libraries
+    kapt("com.google.dagger:dagger-android-processor:2.40.5")
 }
