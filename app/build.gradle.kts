@@ -74,8 +74,6 @@ dependencies {
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
 
-
-    implementation ("com.google.dagger:dagger:2.25.3")
-    kapt ("com.google.dagger:dagger-android-processor:2.25.3")
-    kapt ("com.google.dagger:dagger-compiler:2.25.3")
+    implementation("com.google.dagger:dagger:2.47")
+    kapt("com.google.dagger:dagger-compiler:2.47")
 }
