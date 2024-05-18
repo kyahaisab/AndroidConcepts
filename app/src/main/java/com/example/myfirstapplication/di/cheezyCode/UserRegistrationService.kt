@@ -1,6 +1,8 @@
 package com.example.myfirstapplication.di.cheezyCode
 
-class UserRegistration(
+import javax.inject.Inject
+
+class UserRegistrationService @Inject constructor(
     private val userRepository: UserRepository,
     private val emailService: EmailService
 ) {

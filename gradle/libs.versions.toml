@@ -2,6 +2,8 @@
 agp = "8.3.2"
 dagger = "2.28.3"
 daggerCompiler = "2.x"
+daggerCompilerVersion = "2.40.5"
+daggerVersion = "2.40.5"
 kotlin = "1.9.0"
 coreKtx = "1.10.1"
 junit = "4.13.2"
@@ -22,6 +24,8 @@ dagger-android = { module = "com.google.dagger:dagger-android", version.ref = "d
 dagger-android-processor = { module = "com.google.dagger:dagger-android-processor", version.ref = "daggerCompiler" }
 dagger-android-support = { module = "com.google.dagger:dagger-android-support", version.ref = "daggerCompiler" }
 dagger-compiler = { module = "com.google.dagger:dagger-compiler", version.ref = "daggerCompiler" }
+dagger-compiler-v2405 = { module = "com.google.dagger:dagger-compiler", version.ref = "daggerCompilerVersion" }
+dagger-v2405 = { module = "com.google.dagger:dagger", version.ref = "daggerVersion" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }

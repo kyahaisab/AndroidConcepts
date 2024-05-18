@@ -1,12 +1,9 @@
 package com.example.myfirstapplication.di
 
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import com.example.myfirstapplication.R
-import com.example.myfirstapplication.di.cheezyCode.EmailService
-import com.example.myfirstapplication.di.cheezyCode.UserRegistration
-import com.example.myfirstapplication.di.cheezyCode.UserRepository
+import com.example.myfirstapplication.di.cheezyCode.DaggerUserRegistrationComponent
 
 class BaseDIActivity : AppCompatActivity() {
     companion object {
@@ -15,14 +12,12 @@ class BaseDIActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         setContentView(R.layout.activity_base_diactivity)
 
-        val emailService = EmailService()
-        val userRepository = UserRepository()
 
-        // Doing Manual DI
-        val userRegistration = UserRegistration(userRepository, emailService)
+        val component = DaggerUserRegistrationComponent.builder().build()
+        val userRegistration = component.getUserRegistrationService()
+        val emailService = component.getEmailService()
         userRegistration.registerUser("Sagardawn145@gmail.com", "Maosetun1@98ee")
     }
 }
