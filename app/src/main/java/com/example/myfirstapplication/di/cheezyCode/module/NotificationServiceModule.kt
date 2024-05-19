@@ -1,5 +1,9 @@
-package com.example.myfirstapplication.di.cheezyCode
+package com.example.myfirstapplication.di.cheezyCode.module
 
+import com.example.myfirstapplication.di.cheezyCode.EmailService
+import com.example.myfirstapplication.di.cheezyCode.MessageQualifier
+import com.example.myfirstapplication.di.cheezyCode.MessageService
+import com.example.myfirstapplication.di.cheezyCode.NotificationService
 import dagger.Module
 import dagger.Provides
 import javax.inject.Named

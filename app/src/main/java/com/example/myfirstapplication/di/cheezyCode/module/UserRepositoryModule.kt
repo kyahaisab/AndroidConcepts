@@ -1,8 +1,9 @@
-package com.example.myfirstapplication.di.cheezyCode
+package com.example.myfirstapplication.di.cheezyCode.module
 
+import com.example.myfirstapplication.di.cheezyCode.SQLRepository
+import com.example.myfirstapplication.di.cheezyCode.UserRepository
 import dagger.Binds
 import dagger.Module
-import dagger.Provides
 import javax.inject.Singleton
 
 /*@Module

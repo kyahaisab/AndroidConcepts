@@ -1,6 +1,8 @@
 package com.example.myfirstapplication.di.cheezyCode
 
 import android.app.Application
+import com.example.myfirstapplication.di.cheezyCode.component.DaggerUserRegistrationComponent
+import com.example.myfirstapplication.di.cheezyCode.component.UserRegistrationComponent
 
 class UserApplication : Application() {
 

@@ -1,7 +1,9 @@
-package com.example.myfirstapplication.di.cheezyCode
+package com.example.myfirstapplication.di.cheezyCode.component
 
 import com.example.myfirstapplication.di.BaseDIActivity
 import com.example.myfirstapplication.di.cheezyCode.module.AnalyticsModule
+import com.example.myfirstapplication.di.cheezyCode.module.NotificationServiceModule
+import com.example.myfirstapplication.di.cheezyCode.module.UserRepositoryModule
 import dagger.BindsInstance
 import dagger.Component
 import javax.inject.Singleton
