@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.myfirstapplication.R
 import com.example.myfirstapplication.di.cheezyCode.DaggerUserRegistrationComponent
+import com.example.myfirstapplication.di.cheezyCode.NotificationServiceModule
 import com.example.myfirstapplication.di.cheezyCode.UserRegistrationService
 import javax.inject.Inject
 
@@ -19,8 +20,10 @@ class BaseDIActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_base_diactivity)
 
-
-        val component = DaggerUserRegistrationComponent.builder().build()
+// Till now dagger was creating object for us by itself, but now we need to pass some value at runtime, so we do below
+        val component = DaggerUserRegistrationComponent.builder().notificationServiceModule(
+            NotificationServiceModule(3)
+        ).build()
         component.inject(this)
         userRegistrationService.registerUser("Sagardawn145@gmail.com", "Maosetun1@98ee")
     }
