@@ -6,7 +6,7 @@ import javax.inject.Named
 
 @Module
 class NotificationServiceModule {
-    @Named("message")
+    @MessageQualifier // Help to avoid type, rather than using @Named("message")
     @Provides
     fun getMessageService(): NotificationService {
         return MessageService()

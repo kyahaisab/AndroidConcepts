@@ -5,7 +5,7 @@ import javax.inject.Named
 
 class UserRegistrationService @Inject constructor(
     private val userRepository: UserRepository,
-    @Named("message") private val notificationService: NotificationService
+    @MessageQualifier private val notificationService: NotificationService // we are avoiding typo by avoiding @Named("message")
 ) {
 
     internal fun registerUser(email: String, password: String) {
