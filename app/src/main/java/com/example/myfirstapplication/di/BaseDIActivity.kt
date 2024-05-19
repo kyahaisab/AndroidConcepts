@@ -20,7 +20,11 @@ class BaseDIActivity : AppCompatActivity() {
     @Inject
     lateinit var emailService: EmailService
 
-    // Above and below emailService have diff objects by DI, to get singleton we can use @Singlton, now debug and check hashcode
+    // Above and below emailService have diff objects by DI, to get singleton we can use @Singleton, now debug and check hashcode
+    // These objects are not singleton, when you rotate screen, hashcode change, dubug and check.
+    // On screen rotation, component is made again, so new singleton are made in new scope(component),
+    // so these singltonsare not application level singlton , but activity level bcz component is made again, from same component
+    // If you ask 10 emailservices it will give same obj but on compo change, obj change, so make compo app level
     @Inject
     lateinit var emailService1: EmailService
 
