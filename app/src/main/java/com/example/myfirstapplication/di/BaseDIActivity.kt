@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.myfirstapplication.R
 import com.example.myfirstapplication.di.cheezyCode.DaggerUserRegistrationComponent
+import com.example.myfirstapplication.di.cheezyCode.EmailService
 import com.example.myfirstapplication.di.cheezyCode.NotificationServiceModule
 import com.example.myfirstapplication.di.cheezyCode.UserRegistrationService
 import javax.inject.Inject
@@ -15,6 +16,13 @@ class BaseDIActivity : AppCompatActivity() {
 
     @Inject  // This annotation will let dagger know that these places you need to pass objects, this is called field injection
     lateinit var userRegistrationService: UserRegistrationService
+
+    @Inject
+    lateinit var emailService: EmailService
+
+    // Above and below emailService have diff objects by DI, to get singleton we can use @Singlton, now debug and check hashcode
+    @Inject
+    lateinit var emailService1: EmailService
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

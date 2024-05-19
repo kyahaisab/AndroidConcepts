@@ -3,10 +3,12 @@ package com.example.myfirstapplication.di.cheezyCode
 import dagger.Module
 import dagger.Provides
 import javax.inject.Named
+import javax.inject.Singleton
 
 @Module
 class NotificationServiceModule() // now we have that value in component and we do not need to pass it by module
 {
+    @Singleton // making this class singleton
     @MessageQualifier // Help to avoid type, rather than using @Named("message")
     @Provides
     fun getMessageService(retryCount:Int): NotificationService { // pass retry count here, bcz component have it

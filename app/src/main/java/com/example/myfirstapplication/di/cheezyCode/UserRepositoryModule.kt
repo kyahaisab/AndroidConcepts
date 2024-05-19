@@ -3,6 +3,7 @@ package com.example.myfirstapplication.di.cheezyCode
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
+import javax.inject.Singleton
 
 /*@Module
 class UserRepositoryModule {
@@ -17,6 +18,7 @@ class UserRepositoryModule {
 @Module
 abstract class UserRepositoryModule {
     @Binds // all binds uses abstract and passes param need to have constructor injection like sqlRe..
+    @Singleton
     abstract fun getSQLRepository(sqlRepository: SQLRepository): UserRepository
 }
 

@@ -3,7 +3,9 @@ package com.example.myfirstapplication.di.cheezyCode
 import com.example.myfirstapplication.di.BaseDIActivity
 import dagger.BindsInstance
 import dagger.Component
+import javax.inject.Singleton
 
+@Singleton
 @Component(modules = [UserRepositoryModule::class, NotificationServiceModule::class])
 interface UserRegistrationComponent {
     /*    fun getUserRegistrationService(): UserRegistrationService
