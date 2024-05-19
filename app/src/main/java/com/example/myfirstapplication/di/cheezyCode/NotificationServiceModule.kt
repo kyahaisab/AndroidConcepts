@@ -5,12 +5,11 @@ import dagger.Provides
 import javax.inject.Named
 
 @Module
-class NotificationServiceModule(private val retryCount: Int) // Till now dagger is calling it, but now we have param retryCount
-// which we will get at runtime
+class NotificationServiceModule() // now we have that value in component and we do not need to pass it by module
 {
     @MessageQualifier // Help to avoid type, rather than using @Named("message")
     @Provides
-    fun getMessageService(): NotificationService {
+    fun getMessageService(retryCount:Int): NotificationService { // pass retry count here, bcz component have it
         return MessageService(retryCount)
     }
 

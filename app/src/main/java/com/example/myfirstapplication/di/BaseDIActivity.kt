@@ -21,9 +21,14 @@ class BaseDIActivity : AppCompatActivity() {
         setContentView(R.layout.activity_base_diactivity)
 
 // Till now dagger was creating object for us by itself, but now we need to pass some value at runtime, so we do below
-        val component = DaggerUserRegistrationComponent.builder().notificationServiceModule(
-            NotificationServiceModule(3)
-        ).build()
+//        val component = DaggerUserRegistrationComponent
+//            .builder()
+//            // Say someone forgot to put the below line, so it will create problem at runtime
+//            //.notificationServiceModule(NotificationServiceModule(3))
+//            .build()
+
+        val component = DaggerUserRegistrationComponent.factory().create(3) // using factory
+
         component.inject(this)
         userRegistrationService.registerUser("Sagardawn145@gmail.com", "Maosetun1@98ee")
     }
