@@ -1,4 +1,4 @@
-package com.example.myfirstapplication.di.cheezyCode
+package com.example.myfirstapplication.di.cheezyCode.annotations
 
 import java.lang.annotation.Documented
 import java.lang.annotation.Retention

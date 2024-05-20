@@ -1,4 +1,4 @@
-package com.example.myfirstapplication.di.cheezyCode
+package com.example.myfirstapplication.di.cheezyCode.basicFunction
 
 import android.util.Log
 import com.example.myfirstapplication.di.BaseDIActivity.Companion.TAG

@@ -1,21 +1,21 @@
 package com.example.myfirstapplication.di.cheezyCode.module
 
-import com.example.myfirstapplication.di.cheezyCode.EmailService
-import com.example.myfirstapplication.di.cheezyCode.MessageQualifier
-import com.example.myfirstapplication.di.cheezyCode.MessageService
-import com.example.myfirstapplication.di.cheezyCode.NotificationService
+import com.example.myfirstapplication.di.cheezyCode.annotations.ActivityScope
+import com.example.myfirstapplication.di.cheezyCode.annotations.MessageQualifier
+import com.example.myfirstapplication.di.cheezyCode.basicFunction.EmailService
+import com.example.myfirstapplication.di.cheezyCode.basicFunction.MessageService
+import com.example.myfirstapplication.di.cheezyCode.basicFunction.NotificationService
 import dagger.Module
 import dagger.Provides
 import javax.inject.Named
-import javax.inject.Singleton
 
 @Module
 class NotificationServiceModule() // now we have that value in component and we do not need to pass it by module
 {
-    @Singleton // making this class singleton
+    @ActivityScope
     @MessageQualifier // Help to avoid type, rather than using @Named("message")
     @Provides
-    fun getMessageService(retryCount:Int): NotificationService { // pass retry count here, bcz component have it
+    fun getMessageService(retryCount: Int): NotificationService { // pass retry count here, bcz component have it
         return MessageService(retryCount)
     }
 

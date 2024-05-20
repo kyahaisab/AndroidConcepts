@@ -1,10 +1,10 @@
 package com.example.myfirstapplication.di.cheezyCode.module
 
-import com.example.myfirstapplication.di.cheezyCode.SQLRepository
-import com.example.myfirstapplication.di.cheezyCode.UserRepository
+import com.example.myfirstapplication.di.cheezyCode.annotations.ActivityScope
+import com.example.myfirstapplication.di.cheezyCode.basicFunction.SQLRepository
+import com.example.myfirstapplication.di.cheezyCode.basicFunction.UserRepository
 import dagger.Binds
 import dagger.Module
-import javax.inject.Singleton
 
 /*@Module
 class UserRepositoryModule {
@@ -19,7 +19,7 @@ class UserRepositoryModule {
 @Module
 abstract class UserRepositoryModule {
     @Binds // all binds uses abstract and passes param need to have constructor injection like sqlRe..
-    @Singleton
+    @ActivityScope
     abstract fun getSQLRepository(sqlRepository: SQLRepository): UserRepository
 }
 

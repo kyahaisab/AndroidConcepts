@@ -1,15 +1,15 @@
-package com.example.myfirstapplication.di.cheezyCode
+package com.example.myfirstapplication.di.cheezyCode.basicFunction
 
 import android.util.Log
 import com.example.myfirstapplication.di.BaseDIActivity
+import com.example.myfirstapplication.di.cheezyCode.annotations.ActivityScope
 import javax.inject.Inject
-import javax.inject.Singleton
 
 interface NotificationService {
     fun send(to: String, from: String, body: String?)
 }
 
-@Singleton
+@ActivityScope
 class EmailService @Inject constructor() : NotificationService {
     override
     fun send(to: String, from: String, body: String?) {
