@@ -9,5 +9,9 @@ import javax.inject.Singleton
 @Component(modules = [AnalyticsModule::class])
 interface AppComponent {
 
-    fun getAnalyticsService(): AnalyticsService
+    // No need to any object here when using subcomponent
+    //fun getAnalyticsService(): AnalyticsService
+
+    fun getUserRegistrationComponentFactory(): UserRegistrationComponent.Factory // This is subcomponent and AppComponent is parent component
+    // So sub component will be able to use parent component
 }

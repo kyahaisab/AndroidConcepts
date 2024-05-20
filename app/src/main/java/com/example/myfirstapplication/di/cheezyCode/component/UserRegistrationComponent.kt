@@ -6,20 +6,17 @@ import com.example.myfirstapplication.di.cheezyCode.module.NotificationServiceMo
 import com.example.myfirstapplication.di.cheezyCode.module.UserRepositoryModule
 import dagger.BindsInstance
 import dagger.Component
+import dagger.Subcomponent
 
+// To use appComponent directly, make UserRegistrationComponent a sub component(like subclass uses super class variables)
+// UserRegistrationComponent will able to use appComponent directly
 @ActivityScope
-@Component(
-    dependencies = [AppComponent::class],
-    modules = [UserRepositoryModule::class, NotificationServiceModule::class]
-)
+@Subcomponent(modules = [UserRepositoryModule::class, NotificationServiceModule::class])
 interface UserRegistrationComponent {
     fun inject(baseDIActivity: BaseDIActivity)
 
-    @Component.Factory
+    @Subcomponent.Factory
     interface Factory {
-        fun create(
-            @BindsInstance retryCount: Int,
-            appComponent: AppComponent
-        ): UserRegistrationComponent
+        fun create(@BindsInstance retryCount: Int): UserRegistrationComponent
     }
 }
