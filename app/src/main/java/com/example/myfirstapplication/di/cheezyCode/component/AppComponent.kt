@@ -12,5 +12,5 @@ interface AppComponent {
     // No need to any object here when using subcomponent
     //fun getAnalyticsService(): AnalyticsService
 
-    fun getUserRegistrationComponent(): UserRegistrationComponent
+    fun getUserRegistrationComponentBuilder(): UserRegistrationComponent.Builder
 }

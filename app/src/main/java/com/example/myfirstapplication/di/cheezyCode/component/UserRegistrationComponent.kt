@@ -14,9 +14,11 @@ import dagger.Subcomponent
 @Subcomponent(modules = [UserRepositoryModule::class, NotificationServiceModule::class])
 interface UserRegistrationComponent {
     fun inject(baseDIActivity: BaseDIActivity)
-/*
-    @Subcomponent.Factory
-    interface Factory {
-        fun create(@BindsInstance retryCount: Int): UserRegistrationComponent
-    }*/
+
+    // Rather than using factory use builder
+    @Subcomponent.Builder
+    interface Builder {
+        fun build(): UserRegistrationComponent
+        fun retryCount(@BindsInstance retryCount: Int): Builder
+    }
 }

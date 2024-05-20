@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.myfirstapplication.R
 import com.example.myfirstapplication.di.cheezyCode.UserApplication
 import com.example.myfirstapplication.di.cheezyCode.UserRegistrationService
-import com.example.myfirstapplication.di.cheezyCode.component.DaggerUserRegistrationComponent
 import javax.inject.Inject
 
 class BaseDIActivity : AppCompatActivity() {
@@ -24,7 +23,7 @@ class BaseDIActivity : AppCompatActivity() {
 
         val appComponent = (application as UserApplication).appComponent
         val userRegistrationComponent =
-            appComponent.getUserRegistrationComponent()
+            appComponent.getUserRegistrationComponentBuilder().retryCount(3).build()
         userRegistrationComponent.inject(this)
         userRegistrationService.registerUser("Sagardawn145@gmail.com", "Maosetun1@98ee")
     }
