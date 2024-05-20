@@ -15,8 +15,8 @@ class NotificationServiceModule() // now we have that value in component and we 
     @ActivityScope
     @MessageQualifier // Help to avoid type, rather than using @Named("message")
     @Provides
-    fun getMessageService(retryCount: Int): NotificationService { // pass retry count here, bcz component have it
-        return MessageService(retryCount)
+    fun getMessageService(): NotificationService {
+        return MessageService(3)
     }
 
     // Say in main activity we need object of emailService as well, so dagger will get confused, as to what obj to provide

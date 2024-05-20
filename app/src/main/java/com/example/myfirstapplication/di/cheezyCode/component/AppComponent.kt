@@ -12,6 +12,5 @@ interface AppComponent {
     // No need to any object here when using subcomponent
     //fun getAnalyticsService(): AnalyticsService
 
-    fun getUserRegistrationComponentFactory(): UserRegistrationComponent.Factory // This is subcomponent and AppComponent is parent component
-    // So sub component will be able to use parent component
+    fun getUserRegistrationComponent(): UserRegistrationComponent
 }
