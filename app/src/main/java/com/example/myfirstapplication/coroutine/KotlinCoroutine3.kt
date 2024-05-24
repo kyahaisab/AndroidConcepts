@@ -9,7 +9,7 @@ import kotlinx.coroutines.runBlocking
 
 /*
  Coroutine builders:
- Coroutine builders are used for creating co routines. 3 types of builders- launch, async, runBlocking, withContext
+ Coroutine builders are used for creating co routines. 3 types of builders- launch, async, runBlocking, withContext and many others
  So the diff b/w launch and GlobalScope.launch ex. say we are on login screen from there we move to signup screen and there we
  used launch coroutine c1 on returning from sign up screen c1 will get automatically cancelled(c1 was created in local scope of signup,
  so when signup destroyed). If we have used GlobalScope.launch rather than launch it would have existed for lifetime of app.

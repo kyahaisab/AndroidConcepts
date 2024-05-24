@@ -35,6 +35,7 @@ fun main() { // Executes in main thread and statement inside it also runs in mai
     // - To make co routine finish its work and main thread to wait
     //Thread.sleep(2000) // without this, coroutine part is not completed and nothing printed on consol
 
+    // runBlocking builder is used to start a coroutine and block the current thread until the coroutine completes.
     // - Alternative of above, because delay can't run on thread, so to use delay use coroutine run blocking
     runBlocking {// creates coroutine that block the current thread where its put on(in our case its main thread)
         delay(2000)// wait for coroutine to finish work(not good way to wait)
