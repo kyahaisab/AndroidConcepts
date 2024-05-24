@@ -110,16 +110,16 @@ fun main() {
 
     //Ex:9
     // You can make ct=0 then update it in background thread and print that in main diff thread
-    var counter=0
+    var counter = 0
     thread(true, name = "SagarThread", priority = Thread.MAX_PRIORITY, isDaemon = true) {
         println("Start")
-        while (true){
+        while (true) {
             counter++
             Thread.sleep(200)
         }
     }
     thread {
-        while (counter<100){
+        while (counter < 100) {
             println(counter)
             Thread.sleep(400)
         }

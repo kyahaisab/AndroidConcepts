@@ -26,9 +26,8 @@ cooperative and therefore it can be cancelled by calling the cancel function
 
 * Using isActive
 */
-/*
 
-fun main() {
+/*fun main() {
     runBlocking {
         println("Main program starts: ${Thread.currentThread().name}")
 
@@ -41,14 +40,14 @@ fun main() {
             }
         }
         delay(200)
-        job.cancel() // ideally job shou;d get cancelled after 200 ms but it is not, because sleep and print are not cooperative fun
+        job.cancel() // ideally job should get cancelled after 200 ms but it is not, because sleep and print are not cooperative fun
         job.join()
 
         println("Main program Ended: ${Thread.currentThread().name}")
     }
 }*/
-/*
 
+/*
 fun main() {
     runBlocking {
         println("Main program starts: ${Thread.currentThread().name}")
@@ -73,6 +72,7 @@ fun main() {
 In short, all the cancellable suspending functions such as yield, delay present in coroutine package
 throw CancellationException when the coroutine is cancelled.
  */
+/*
 fun main() {
     runBlocking {
         println("Main program starts: ${Thread.currentThread().name}")
@@ -88,11 +88,10 @@ fun main() {
             } finally {
                 println("Finally job ends")
             }
-
         }
         delay(100)
         job.cancelAndJoin() // same as cancel() then join()
 
         println("Main program Ended: ${Thread.currentThread().name}")
     }
-}
+}*/

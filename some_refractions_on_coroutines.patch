@@ -1,0 +1,315 @@
+Subject: [PATCH] some refractions on coroutines
+---
+Index: app/src/main/java/com/example/myfirstapplication/MainPractice.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/myfirstapplication/MainPractice.kt b/app/src/main/java/com/example/myfirstapplication/MainPractice.kt
+--- a/app/src/main/java/com/example/myfirstapplication/MainPractice.kt	(revision cc418f248c27c2abb637872d777ba67fc8f60f4a)
++++ b/app/src/main/java/com/example/myfirstapplication/MainPractice.kt	(revision 53e528f801afc7401de4a97e04949912afd8db98)
+@@ -1,3 +1,19 @@
+ package com.example.myfirstapplication
+ 
++import kotlinx.coroutines.GlobalScope
++import kotlinx.coroutines.delay
++import kotlinx.coroutines.launch
++import kotlinx.coroutines.runBlocking
+ 
++fun main() {
++    // maybe on deamon thread
++    GlobalScope.launch {
++        println("started ${Thread.currentThread().name}")
++        delay(1000)
++        println("ended ${Thread.currentThread().name}")
++    }
++
++    runBlocking {
++        delay(1200)
++    }
++}
+\ No newline at end of file
+Index: app/src/main/java/com/example/myfirstapplication/coroutine/CoroutineBasics
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/myfirstapplication/coroutine/CoroutineBasics b/app/src/main/java/com/example/myfirstapplication/coroutine/CoroutineBasics
+--- a/app/src/main/java/com/example/myfirstapplication/coroutine/CoroutineBasics	(revision cc418f248c27c2abb637872d777ba67fc8f60f4a)
++++ b/app/src/main/java/com/example/myfirstapplication/coroutine/CoroutineBasics	(revision 53e528f801afc7401de4a97e04949912afd8db98)
+@@ -11,4 +11,6 @@
+    Instead You can have just one background thread And on this thread, you can launch coroutines.
+    Such as launch a coroutine to perform File UploadLaunch another coroutine on the same background thread
+    to perform some network operations. Like threads, coroutines can run in parallel, wait for each other to finish,
+-   and even communicate with each other.But remember coroutines are not threads.
+\ No newline at end of file
++   and even communicate with each other.But remember coroutines are not threads.
++
++4. Then go to coroutineAmit
+\ No newline at end of file
+Index: app/src/main/java/com/example/myfirstapplication/coroutine/KotlinCoroutine3.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/myfirstapplication/coroutine/KotlinCoroutine3.kt b/app/src/main/java/com/example/myfirstapplication/coroutine/KotlinCoroutine3.kt
+--- a/app/src/main/java/com/example/myfirstapplication/coroutine/KotlinCoroutine3.kt	(revision cc418f248c27c2abb637872d777ba67fc8f60f4a)
++++ b/app/src/main/java/com/example/myfirstapplication/coroutine/KotlinCoroutine3.kt	(revision 53e528f801afc7401de4a97e04949912afd8db98)
+@@ -9,7 +9,7 @@
+ 
+ /*
+  Coroutine builders:
+- Coroutine builders are used for creating co routines. 3 types of builders- launch, async, runBlocking, other ways as well
++ Coroutine builders are used for creating co routines. 3 types of builders- launch, async, runBlocking, withContext
+  So the diff b/w launch and GlobalScope.launch ex. say we are on login screen from there we move to signup screen and there we
+  used launch coroutine c1 on returning from sign up screen c1 will get automatically cancelled(c1 was created in local scope of signup,
+  so when signup destroyed). If we have used GlobalScope.launch rather than launch it would have existed for lifetime of app.
+@@ -22,7 +22,7 @@
+     runBlocking { // will run on current thread i.e main thread
+         println("Main program starts: ${Thread.currentThread().name}") // main thread
+ 
+-        // launch co routine will inherit thread and score of immediate parent coroutine
++        // launch co routine will inherit thread and scope of immediate parent coroutine
+         launch {
+             println("Fake work start: ${Thread.currentThread().name}")// main
+             delay(1000) // Coroutine is suspended but Thread: main is free
+@@ -34,13 +34,12 @@
+         println("Main program Ended: ${Thread.currentThread().name}") // main
+     }
+ }*/
+-/*
+ 
+-fun main() {
++/*fun main() {
+     runBlocking { // will run on current thread i.e main thread
+         println("Main program starts: ${Thread.currentThread().name}") // main thread
+ 
+-        // launch co routine will inherit thread and score of immediate parent coroutine, and it does not block the curr thread
++        // launch co routine will inherit thread and scope of immediate parent coroutine, and it does not block the curr thread
+         // launch returns job object
+         val job: Job = launch {
+             println("Fake work start: ${Thread.currentThread().name}")// main
+@@ -53,15 +52,14 @@
+ 
+         println("Main program Ended: ${Thread.currentThread().name}") // main
+     }
+-}
+-*/
++}*/
+ 
+-fun main() {
++/*fun main() {
+     runBlocking { // will run on current thread i.e main thread
+         println("Main program starts: ${Thread.currentThread().name}") // main thread
+ 
+         // async co routine will inherit thread and score of immediate parent coroutine, and it does not block the curr thread
+-        // launch returns deferred object
++        // async returns deferred object
+         val jobDeferred: Deferred<String> =
+             async { // one can use GlobalScope.async have global scope
+                 println("Fake work start: ${Thread.currentThread().name}")// main
+@@ -83,4 +81,4 @@
+ // Used for testing purpose
+ suspend fun mySuspendFunction() {
+     delay(1000)
+-}
++}*/
+Index: app/src/main/java/com/example/myfirstapplication/coroutine/KotlinCoroutine4.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/myfirstapplication/coroutine/KotlinCoroutine4.kt b/app/src/main/java/com/example/myfirstapplication/coroutine/KotlinCoroutine4.kt
+--- a/app/src/main/java/com/example/myfirstapplication/coroutine/KotlinCoroutine4.kt	(revision cc418f248c27c2abb637872d777ba67fc8f60f4a)
++++ b/app/src/main/java/com/example/myfirstapplication/coroutine/KotlinCoroutine4.kt	(revision 53e528f801afc7401de4a97e04949912afd8db98)
+@@ -26,9 +26,8 @@
+ 
+ * Using isActive
+ */
+-/*
+ 
+-fun main() {
++/*fun main() {
+     runBlocking {
+         println("Main program starts: ${Thread.currentThread().name}")
+ 
+@@ -41,14 +40,14 @@
+             }
+         }
+         delay(200)
+-        job.cancel() // ideally job shou;d get cancelled after 200 ms but it is not, because sleep and print are not cooperative fun
++        job.cancel() // ideally job should get cancelled after 200 ms but it is not, because sleep and print are not cooperative fun
+         job.join()
+ 
+         println("Main program Ended: ${Thread.currentThread().name}")
+     }
+ }*/
+-/*
+ 
++/*
+ fun main() {
+     runBlocking {
+         println("Main program starts: ${Thread.currentThread().name}")
+@@ -73,6 +72,7 @@
+ In short, all the cancellable suspending functions such as yield, delay present in coroutine package
+ throw CancellationException when the coroutine is cancelled.
+  */
++/*
+ fun main() {
+     runBlocking {
+         println("Main program starts: ${Thread.currentThread().name}")
+@@ -88,11 +88,10 @@
+             } finally {
+                 println("Finally job ends")
+             }
+-
+         }
+         delay(100)
+         job.cancelAndJoin() // same as cancel() then join()
+ 
+         println("Main program Ended: ${Thread.currentThread().name}")
+     }
+-}
++}*/
+Index: app/src/main/java/com/example/myfirstapplication/coroutine/KotlinCoroutine5.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/myfirstapplication/coroutine/KotlinCoroutine5.kt b/app/src/main/java/com/example/myfirstapplication/coroutine/KotlinCoroutine5.kt
+--- a/app/src/main/java/com/example/myfirstapplication/coroutine/KotlinCoroutine5.kt	(revision cc418f248c27c2abb637872d777ba67fc8f60f4a)
++++ b/app/src/main/java/com/example/myfirstapplication/coroutine/KotlinCoroutine5.kt	(revision 53e528f801afc7401de4a97e04949912afd8db98)
+@@ -6,9 +6,7 @@
+ import kotlinx.coroutines.withTimeout
+ import kotlinx.coroutines.withTimeoutOrNull
+ 
+-/*
+-
+-fun main() {
++/*fun main() {
+     runBlocking {
+         println("Main program starts: ${Thread.currentThread().name}")
+ 
+@@ -31,6 +29,7 @@
+     }
+ }*/
+ 
++/*
+ fun main() {
+     runBlocking {
+         println("Main program starts: ${Thread.currentThread().name}")
+@@ -48,4 +47,4 @@
+         println("Return value: $result")
+         println("Main program Ended: ${Thread.currentThread().name}")
+     }
+-}
+\ No newline at end of file
++}*/
+Index: app/src/main/java/com/example/myfirstapplication/coroutine/KotlinCoroutine6.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/myfirstapplication/coroutine/KotlinCoroutine6.kt b/app/src/main/java/com/example/myfirstapplication/coroutine/KotlinCoroutine6.kt
+--- a/app/src/main/java/com/example/myfirstapplication/coroutine/KotlinCoroutine6.kt	(revision cc418f248c27c2abb637872d777ba67fc8f60f4a)
++++ b/app/src/main/java/com/example/myfirstapplication/coroutine/KotlinCoroutine6.kt	(revision 53e528f801afc7401de4a97e04949912afd8db98)
+@@ -6,9 +6,8 @@
+ import kotlinx.coroutines.runBlocking
+ import kotlin.system.measureTimeMillis
+ 
+-/*
+ // Sequential execution
+-fun main() {
++/*fun main() {
+     runBlocking {
+         println("Main program start: ${Thread.currentThread().name}")
+ 
+@@ -37,7 +36,7 @@
+ }
+ 
+ // Run parallel or concurrently, we can use launch, async, etc
+-fun main() {
++/*fun main() {
+     runBlocking {
+         println("Main program start: ${Thread.currentThread().name}")
+ 
+@@ -48,14 +47,14 @@
+                 async { taskTwo() } // run in other background coroutine c2
+             println("Result is: ${taskOne.await() + tasKTwo.await()}")
+         }
+-        /*
++        *//*
+          - Await, join wait for result, taskOne and taskTwo launched and then waiting started, so 1 sec.
+            line 45 launched 1 ms(internally working for 1 sec), line 47 launched 1 ms(internally working for 1 sec), then
+            taskOne.await() wait for 1000ms to get result, then tasKTwo.await() wait for 1 ms so total 1000ms time
+          - But is taskOne then await = wait for result 1 sec, then taskTwo and await then = 1 sec to wait for result then move ahead
+-          */
++          *//*
+         println("Total time taken: $measureTime") // nearly 1 sec, means both runs concurrently
+ 
+         println("Main program Completed: ${Thread.currentThread().name}")
+     }
+-}
++}*/
+Index: app/src/main/java/com/example/myfirstapplication/otherTerminology/Threads.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/myfirstapplication/otherTerminology/Threads.kt b/app/src/main/java/com/example/myfirstapplication/otherTerminology/Threads.kt
+--- a/app/src/main/java/com/example/myfirstapplication/otherTerminology/Threads.kt	(revision cc418f248c27c2abb637872d777ba67fc8f60f4a)
++++ b/app/src/main/java/com/example/myfirstapplication/otherTerminology/Threads.kt	(revision 53e528f801afc7401de4a97e04949912afd8db98)
+@@ -110,16 +110,16 @@
+ 
+     //Ex:9
+     // You can make ct=0 then update it in background thread and print that in main diff thread
+-    var counter=0
++    var counter = 0
+     thread(true, name = "SagarThread", priority = Thread.MAX_PRIORITY, isDaemon = true) {
+         println("Start")
+-        while (true){
++        while (true) {
+             counter++
+             Thread.sleep(200)
+         }
+     }
+     thread {
+-        while (counter<100){
++        while (counter < 100) {
+             println(counter)
+             Thread.sleep(400)
+         }
+Index: app/src/main/java/com/example/myfirstapplication/otherTerminology/Threads2.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/myfirstapplication/otherTerminology/Threads2.kt b/app/src/main/java/com/example/myfirstapplication/otherTerminology/Threads2.kt
+--- a/app/src/main/java/com/example/myfirstapplication/otherTerminology/Threads2.kt	(revision cc418f248c27c2abb637872d777ba67fc8f60f4a)
++++ b/app/src/main/java/com/example/myfirstapplication/otherTerminology/Threads2.kt	(revision 53e528f801afc7401de4a97e04949912afd8db98)
+@@ -25,3 +25,25 @@
+     thread1.start()
+     thread2.start()
+ }
++
++/*
++fun main() {
++    // To demonstrate that t1.join will block program until t1 is finished
++    println("Outside threads st")
++
++    val t1 = thread(isDaemon = true) {
++        println("Inside demon st")
++        Thread.sleep(2000)
++        println("Inside demon end")
++    }
++    val t2 = thread {
++        println("Inside thread st")
++        Thread.sleep(1000)
++        println("Inside thread end")
++    }
++
++    println("Outside threads end1")
++    t1.join()
++    println("Outside threads end2")
++}
++*/

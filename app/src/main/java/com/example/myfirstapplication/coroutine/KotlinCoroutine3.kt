@@ -9,7 +9,7 @@ import kotlinx.coroutines.runBlocking
 
 /*
  Coroutine builders:
- Coroutine builders are used for creating co routines. 3 types of builders- launch, async, runBlocking, other ways as well
+ Coroutine builders are used for creating co routines. 3 types of builders- launch, async, runBlocking, withContext
  So the diff b/w launch and GlobalScope.launch ex. say we are on login screen from there we move to signup screen and there we
  used launch coroutine c1 on returning from sign up screen c1 will get automatically cancelled(c1 was created in local scope of signup,
  so when signup destroyed). If we have used GlobalScope.launch rather than launch it would have existed for lifetime of app.
@@ -22,7 +22,7 @@ import kotlinx.coroutines.runBlocking
     runBlocking { // will run on current thread i.e main thread
         println("Main program starts: ${Thread.currentThread().name}") // main thread
 
-        // launch co routine will inherit thread and score of immediate parent coroutine
+        // launch co routine will inherit thread and scope of immediate parent coroutine
         launch {
             println("Fake work start: ${Thread.currentThread().name}")// main
             delay(1000) // Coroutine is suspended but Thread: main is free
@@ -34,13 +34,12 @@ import kotlinx.coroutines.runBlocking
         println("Main program Ended: ${Thread.currentThread().name}") // main
     }
 }*/
-/*
 
-fun main() {
+/*fun main() {
     runBlocking { // will run on current thread i.e main thread
         println("Main program starts: ${Thread.currentThread().name}") // main thread
 
-        // launch co routine will inherit thread and score of immediate parent coroutine, and it does not block the curr thread
+        // launch co routine will inherit thread and scope of immediate parent coroutine, and it does not block the curr thread
         // launch returns job object
         val job: Job = launch {
             println("Fake work start: ${Thread.currentThread().name}")// main
@@ -53,15 +52,14 @@ fun main() {
 
         println("Main program Ended: ${Thread.currentThread().name}") // main
     }
-}
-*/
+}*/
 
-fun main() {
+/*fun main() {
     runBlocking { // will run on current thread i.e main thread
         println("Main program starts: ${Thread.currentThread().name}") // main thread
 
         // async co routine will inherit thread and score of immediate parent coroutine, and it does not block the curr thread
-        // launch returns deferred object
+        // async returns deferred object
         val jobDeferred: Deferred<String> =
             async { // one can use GlobalScope.async have global scope
                 println("Fake work start: ${Thread.currentThread().name}")// main
@@ -83,4 +81,4 @@ fun main() {
 // Used for testing purpose
 suspend fun mySuspendFunction() {
     delay(1000)
-}
+}*/

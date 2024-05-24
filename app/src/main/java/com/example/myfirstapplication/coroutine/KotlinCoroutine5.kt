@@ -6,9 +6,7 @@ import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withTimeout
 import kotlinx.coroutines.withTimeoutOrNull
 
-/*
-
-fun main() {
+/*fun main() {
     runBlocking {
         println("Main program starts: ${Thread.currentThread().name}")
 
@@ -31,6 +29,7 @@ fun main() {
     }
 }*/
 
+/*
 fun main() {
     runBlocking {
         println("Main program starts: ${Thread.currentThread().name}")
@@ -48,4 +47,4 @@ fun main() {
         println("Return value: $result")
         println("Main program Ended: ${Thread.currentThread().name}")
     }
-}
+}*/
