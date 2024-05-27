@@ -5,7 +5,9 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.myfirstapplication.click
 import com.example.myfirstapplication.databinding.ActivityBaseServiceBinding
-import com.example.myfirstapplication.servicesProject.services.MyStartedService
+import com.example.myfirstapplication.servicesProject.activities.BoundServiceActivity
+import com.example.myfirstapplication.servicesProject.activities.ForegroundServiceActivity
+import com.example.myfirstapplication.servicesProject.activities.StartedServiceActivity
 
 class BaseServiceActivity : AppCompatActivity() {
     private lateinit var binding: ActivityBaseServiceBinding
@@ -19,14 +21,15 @@ class BaseServiceActivity : AppCompatActivity() {
     }
 
     private fun setupViews() {
-        binding.startServiceButton.click {
-            val serviceIntent = Intent(this, MyStartedService::class.java)
-            startService(serviceIntent)
+        binding.startedServiceButton.click {
+            startActivity(Intent(this, StartedServiceActivity::class.java))
         }
+        binding.boundServiceButton.click {
+            startActivity(Intent(this, BoundServiceActivity::class.java))
+        }
+        binding.foregroundServiceButton.click {
+            startActivity(Intent(this, ForegroundServiceActivity::class.java))
 
-        binding.stopServiceButton.click {
-            val serviceIntent = Intent(this, MyStartedService::class.java)
-            stopService(serviceIntent)
         }
     }
 }

@@ -5,30 +5,24 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".servicesProject.BaseServiceActivity">
+    tools:context=".servicesProject.activities.ForegroundServiceActivity">
+
 
     <Button
-        android:id="@+id/startedServiceButton"
+        android:id="@+id/startServiceButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Started Service"
+        android:text="Start Foreground Service"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/boundServiceButton"
+        android:id="@+id/stopServiceButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Bound Service"
+        android:layout_marginTop="16dp"
+        android:text="Stop Foreground Service"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/startedServiceButton" />
-
-    <Button
-        android:id="@+id/foregroundServiceButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Foreground Service"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/boundServiceButton" />
+        app:layout_constraintTop_toBottomOf="@id/startServiceButton" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

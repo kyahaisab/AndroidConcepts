@@ -1,7 +1,7 @@
 Threads vs Services
 
 **********Path to proceed**************
-MyStartedService->MyStartedServiceCustomLooperHandler
+MyStartedService->MyStartedServiceCustomLooperHandler->Bounded Service->Foreground Services->Intent Services->Job Schedulers-> Job intent services
 
 ************SERVICES************
 Services in Android are components that perform long-running operations in the background.
@@ -14,13 +14,29 @@ Handling network transactions
 Performing file I/O operations
 
 **Types of Services. There are three primary types of services in Android:
+
 -Started Service: A Started Service is a service that is started when a component (such as an activity) calls startService().
 Once started, a service can run in the background indefinitely, even if the component that started it is destroyed.
 It needs to stop itself by calling stopSelf() or another component can stop it by calling stopService()
 
--Bound Service: A service that is bound to one or more components (such as activities) that bind to it using bindService().
-It provides a client-server interface that allows components to interact with the service, send requests, receive results,
-and do so across processes.
+-Bound Service: A bound service is one that allows other components (such as activities) to bind to it and interact with it.
+Bound services are used when you want to provide a client-server interface that allows components to interact with the service,
+send requests, receive responses, and even do so across processes with inter-process communication (IPC)
 
 -Foreground Service: A service that is given higher priority and must display a notification to the user.
 This type of service is used for tasks that the user is actively aware of, such as music playback or location tracking.
+
+** Intent Service
+IntentService is a subclass of Service designed to handle asynchronous requests (expressed as Intents) on demand.
+Clients send requests through startService(Intent), and the service handles each intent in turn using a worker thread.
+Once all requests are handled, the IntentService stops itself. However, given its deprecation, consider using JobIntentService
+or other modern alternatives like WorkManager for new projects.
+
+** Job Schedulers
+JobScheduler is an API in Android for scheduling tasks to be executed in the background. It allows you to specify conditions
+ under which your task should run, such as network availability or charging state.
+The JobScheduler ensures efficient use of system resources by batching jobs and running them at the most appropriate time.
+
+** Job intent services
+JobIntentService is a valuable tool for handling background tasks in a way that's compatible with modern Android versions.
+It provides the simplicity of IntentService while ensuring compliance with background execution limits introduced in newer Android versions.
