@@ -5,5 +5,5 @@ import java.util.UUID
 class Ticket(
     val parkingLotID: String = UUID.randomUUID().toString(),
     val floorNo: Int,
-    val slotNo: Int
+    val lotNo: Int
 )

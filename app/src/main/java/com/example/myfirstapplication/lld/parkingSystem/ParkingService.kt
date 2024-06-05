@@ -11,8 +11,15 @@ import com.example.myfirstapplication.lld.parkingSystem.models.VehicleParkingInf
 
 class ParkingService {
     private var parking: MutableList<ParkingFloor> = mutableListOf()
-    private var isParkingSystemCreated: Boolean = false
 
+    /**
+     * Creates the entire parking system with the specified number of floors and parking lots for different vehicle types.
+     *
+     * @param noOfFloors The number of floors in the parking system.
+     * @param numberOfCarParkingLot The number of car parking lots per floor. Defaults to DEFAULT_CAR_PARKING_LOT.
+     * @param numberOfBikeParkingLot The number of bike parking lots per floor. Defaults to DEFAULT_BIKE_PARKING_LOT.
+     * @param numberOfTruckParkingLot The number of truck parking lots per floor. Defaults to DEFAULT_TRUCK_PARKING_LOT.
+     */
     fun createParkingSystem(
         noOfFloors: Int,
         numberOfCarParkingLot: Int = DEFAULT_CAR_PARKING_LOT,
@@ -24,39 +31,55 @@ class ParkingService {
         }
     }
 
-
-    private fun addParkingFloor(
+    /**
+     * Adds a parking floor to the parking system with the specified number of parking lots for different vehicle types.
+     *
+     * @param numberOfCarParkingLot The number of car parking lots on this floor. Defaults to DEFAULT_CAR_PARKING_LOT.
+     * @param numberOfBikeParkingLot The number of bike parking lots on this floor. Defaults to DEFAULT_BIKE_PARKING_LOT.
+     * @param numberOfTruckParkingLot The number of truck parking lots on this floor. Defaults to DEFAULT_TRUCK_PARKING_LOT.
+     */
+    fun addParkingFloor(
         numberOfCarParkingLot: Int = DEFAULT_CAR_PARKING_LOT,
         numberOfBikeParkingLot: Int = DEFAULT_BIKE_PARKING_LOT,
         numberOfTruckParkingLot: Int = DEFAULT_TRUCK_PARKING_LOT
     ) {
-        val carParkingLotList = addCarParkingLotInFloor(numberOfCarParkingLot)
-        val bikeParkingLotList = addBikeParkingLotInFloor(numberOfBikeParkingLot)
-        val truckParkingLotList = addTruckParkingLotInFloor(numberOfTruckParkingLot)
-        val currentNumberOfFloors = parking.size
+        val carParkingLotsInFloor = addCarParkingLotInFloor(numberOfCarParkingLot)
+        val bikeParkingLotsInFloor = addBikeParkingLotInFloor(numberOfBikeParkingLot)
+        val truckParkingLotsInFloor = addTruckParkingLotInFloor(numberOfTruckParkingLot)
+        val currentFloorToBeAdded = parking.size
 
         parking.add(
             ParkingFloor(
-                currentNumberOfFloors,
-                carParkingLotList,
-                truckParkingLotList,
-                bikeParkingLotList
+                currentFloorToBeAdded,
+                carParkingLotsInFloor,
+                truckParkingLotsInFloor,
+                bikeParkingLotsInFloor
             )
         )
     }
 
+    /**
+     * Parks a car in the parking facility.
+     *
+     * @param registrationNumber The registration number of the car to be parked.
+     * @param color The color of the car to be parked.
+     * @return VehicleParkingInfo The parking information of the parked vehicle, or null if no space is available.
+     *
+     * @author Shiv Sagar Singh
+     * @note do the same code for bike and truck parking
+     */
     fun parkCar(registrationNumber: String, color: Color): VehicleParkingInfo? {
         val emptySpaceForCar = findEmptyFloorForCarParking()
         val emptyFloorNumber = emptySpaceForCar.first
-        val emptySlotNumber = emptySpaceForCar.second
+        val emptyLotNumber = emptySpaceForCar.second
 
-        if (emptySlotNumber == -1 || emptyFloorNumber == -1) return null
+        if (emptyLotNumber == -1 || emptyFloorNumber == -1) return null
 
         val carVehicle = Vehicle(registrationNumber, color, VehicleType.CAR)
-        val carTicket = Ticket(floorNo = emptyFloorNumber, slotNo = emptySlotNumber)
+        val carTicket = Ticket(floorNo = emptyFloorNumber, lotNo = emptyLotNumber)
         val parkingInfo = VehicleParkingInfo(carVehicle, carTicket)
 
-        parking[emptyFloorNumber].carParkingLotList[emptySlotNumber].vehicleParkingSpace.add(
+        parking[emptyFloorNumber].carParkingLotList[emptyLotNumber].vehicleParkingSpace.add(
             parkingInfo
         )
         return parkingInfo
@@ -64,17 +87,17 @@ class ParkingService {
 
     fun unParkCar(vehicleParkingInfo: VehicleParkingInfo): Boolean {
         val requiredFloor = vehicleParkingInfo.vehicleTicket.floorNo
-        val requiredSlot = vehicleParkingInfo.vehicleTicket.slotNo
+        val requiredSlot = vehicleParkingInfo.vehicleTicket.lotNo
         var isCarPresent = false;
         for (car in parking[requiredFloor].carParkingLotList[requiredSlot].vehicleParkingSpace) {
             if (car.vehicleTicket.parkingLotID == vehicleParkingInfo.vehicleTicket.parkingLotID) {
+                parking[requiredFloor].carParkingLotList[requiredSlot].vehicleParkingSpace.remove(
+                    vehicleParkingInfo
+                )
                 isCarPresent = true
                 break
             }
         }
-        parking[requiredFloor].carParkingLotList[requiredSlot].vehicleParkingSpace.remove(
-            vehicleParkingInfo
-        )
         return isCarPresent
     }
 
@@ -110,8 +133,7 @@ class ParkingService {
             for (carParkingLot in 0..<parking[floor].carParkingLotList.size) {
                 if (parking[floor].carParkingLotList[carParkingLot].vehicleParkingSpace.size < DEFAULT_CAR_PARKING_SPACE_IN_LOT) {
                     floorNumber = parking[floor].floorNo
-                    carParkingLotNumber = parking[floor].carParkingLotList[carParkingLot].slotNumber
-                    println("floor and slot: $floorNumber and $carParkingLotNumber")
+                    carParkingLotNumber = parking[floor].carParkingLotList[carParkingLot].lotNumber
                     isSpaceFound = true
                     break
                 }
@@ -123,24 +145,24 @@ class ParkingService {
 
     private fun addBikeParkingLotInFloor(noOfLots: Int): MutableList<BikeParkingLot> {
         val bikeParkingLotList = mutableListOf<BikeParkingLot>()
-        for (slot in 0..<noOfLots) {
-            bikeParkingLotList.add(BikeParkingLot(slot, DEFAULT_BIKE_PARKING_SPACE_IN_LOT))
+        for (lot in 0..<noOfLots) {
+            bikeParkingLotList.add(BikeParkingLot(lot, DEFAULT_BIKE_PARKING_SPACE_IN_LOT))
         }
         return bikeParkingLotList
     }
 
     private fun addCarParkingLotInFloor(noOfLots: Int): MutableList<CarParkingLot> {
         val carParkingLotList = mutableListOf<CarParkingLot>()
-        for (slot in 0..<noOfLots) {
-            carParkingLotList.add(CarParkingLot(slot, DEFAULT_CAR_PARKING_SPACE_IN_LOT))
+        for (lot in 0..<noOfLots) {
+            carParkingLotList.add(CarParkingLot(lot, DEFAULT_CAR_PARKING_SPACE_IN_LOT))
         }
         return carParkingLotList
     }
 
     private fun addTruckParkingLotInFloor(noOfLots: Int): MutableList<TruckParkingLot> {
         val truckParkingLotList = mutableListOf<TruckParkingLot>()
-        for (slot in 0..<noOfLots) {
-            truckParkingLotList.add(TruckParkingLot(slot, DEFAULT_TRUCK_PARKING_SPACE_IN_LOT))
+        for (lot in 0..<noOfLots) {
+            truckParkingLotList.add(TruckParkingLot(lot, DEFAULT_TRUCK_PARKING_SPACE_IN_LOT))
         }
         return truckParkingLotList
     }
