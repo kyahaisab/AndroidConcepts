@@ -1,4 +1,6 @@
-package com.example.myfirstapplication.lld.projectManagment
+package com.example.myfirstapplication.lld.projectManagment.module
+
+import com.example.myfirstapplication.lld.projectManagment.enums.PRIVACY
 
 internal data class Board(
     val id: String,

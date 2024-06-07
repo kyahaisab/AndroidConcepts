@@ -1,5 +1,11 @@
-package com.example.myfirstapplication.lld.projectManagment
+package com.example.myfirstapplication.lld.projectManagment.service
 
+import com.example.myfirstapplication.lld.projectManagment.module.Board
+import com.example.myfirstapplication.lld.projectManagment.module.BoardList
+import com.example.myfirstapplication.lld.projectManagment.module.Card
+import com.example.myfirstapplication.lld.projectManagment.enums.PRIORITY
+import com.example.myfirstapplication.lld.projectManagment.enums.PRIVACY
+import com.example.myfirstapplication.lld.projectManagment.module.User
 import java.util.UUID
 
 internal class BoardService {

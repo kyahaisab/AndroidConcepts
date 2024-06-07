@@ -9,7 +9,7 @@ import com.example.myfirstapplication.lld.parkingSystem.models.Ticket
 import com.example.myfirstapplication.lld.parkingSystem.models.Vehicle
 import com.example.myfirstapplication.lld.parkingSystem.models.VehicleParkingInfo
 
-class ParkingService {
+internal class ParkingService {
     private var parking: MutableList<ParkingFloor> = mutableListOf()
 
     /**

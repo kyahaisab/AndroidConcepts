@@ -13,9 +13,10 @@ fun main() {
             println("${astonMartinCar.vehicleTicket.floorNo}")
         }
         println("$mercedesCar")
-        showAvailableParkingSpaceInAllFloors()
+        //showAvailableParkingSpaceInAllFloors()
         if (mercedesCar != null) {
             unParkCar(mercedesCar)
         }
+        showAvailableParkingSpaceInAllFloors()
     }
 }

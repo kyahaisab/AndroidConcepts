@@ -1,5 +1,10 @@
 package com.example.myfirstapplication.lld.projectManagment
 
+import com.example.myfirstapplication.lld.projectManagment.enums.PRIORITY
+import com.example.myfirstapplication.lld.projectManagment.enums.PRIVACY
+import com.example.myfirstapplication.lld.projectManagment.module.User
+import com.example.myfirstapplication.lld.projectManagment.service.BoardService
+
 
 fun main() {
     val boardService = BoardService()
