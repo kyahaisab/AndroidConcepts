@@ -15,3 +15,26 @@ java.lang.outOfMemoryIssue -> biggest nightmare due to memory leak or loading la
 So no way to force g collection-> System.gc() -> its just making request its up to jvm it can or cannot delay our request.
 Best practice is to find the issue(memory leak etc) and solve it.
  */
+
+/*
+JVM Static:
+Say you want to call a inside singleton of kotlin, from java code, its not possible, so use @jvmstatic(so compiler will
+generate additional static method for us)
+ */
+
+/*
+init block:
+In a class A primary constructor cannot contain any code operation, but secondary constructor can.
+Init block executes after primary but before secondary constructor. There can be multiple init blocks and they appear in
+same sequence as they appear in class body.
+When to use it: when you want to call something at starting of class eg.
+ */
+class NewsListViewModel() {
+    init {
+        fetch()
+    }
+
+    private fun fetch() {
+        // call repo
+    }
+}
