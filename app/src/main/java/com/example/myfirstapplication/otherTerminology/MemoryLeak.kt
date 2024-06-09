@@ -13,7 +13,7 @@ leading to a gradual depletion of available memory
 
 causes:
 -Another object holds a reference to the first object, either directly or indirectly.
-- Even when the first object is no longer needed for the application's logic,
+-Even when the first object is no longer needed for the application's logic,
 the reference to it prevents it from being garbage collected.
 
 prevention:

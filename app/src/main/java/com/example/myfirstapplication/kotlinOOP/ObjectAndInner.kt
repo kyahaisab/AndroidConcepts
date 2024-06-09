@@ -1,6 +1,11 @@
 package com.example.myfirstapplication.kotlinOOP
 
-
+/*
+An anonymous inner class in Java is a type of inner class without a name. It is used to instantiate
+objects with certain "extras," such as method overrides, without having to actually subclass a class.
+This is often used in situations where a class is needed only once,
+typically for short-term use like event handling, callbacks, or other simple operations.
+ */
 interface DownloadListener {
     fun onDownloadStarted()
     fun onDownloadCompleted(file: String)

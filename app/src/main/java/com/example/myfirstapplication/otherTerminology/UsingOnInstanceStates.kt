@@ -38,12 +38,16 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
-        // Save the current counter value before the activity is destroyed
+        // Save the current counter value before the activity is temporarily destroyed
         outState.putInt(KEY_COUNTER, counter)
         super.onSaveInstanceState(outState)
     }
 
     /*
+    This callback is called only when there is a saved instance previously saved using onSaveInstanceState().
+    Some state is restored in onCreate(). Other state can optionally be restored here, possibly usable after
+    onStart() has completed. The savedInstanceState Bundle is same as the one used in onCreate().
+
     The onRestoreInstanceState() method is called after onStart() during the recreation process of the activity.
     It's specifically designed to restore the activity's state from the saved instance state bundle after
     the activity has been recreated due to a configuration change. Unlike onCreate(), onRestoreInstanceState() is not used
