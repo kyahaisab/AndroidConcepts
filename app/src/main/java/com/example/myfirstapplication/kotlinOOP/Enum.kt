@@ -10,27 +10,28 @@ enum class Color {
 interface ShowRespect {
     fun respect()
 }
-// Only interce can be inherited
+
+// Only interface can be inherited
 enum class Caste(val nameCaste: String, val status: String) : ShowRespect {
     SHUDRA("OBC", "HIGH") {
         override fun respect() {
-            println("Ohh GOD")
+            println("Dravidians native indians")
         }
     },
     VAISHYA("GENERAL", "LOW") {
         override fun respect() {
-            println("Bloody Baniya")
+            println("Baniyas")
         }
     },
     BRAMHAN("GENERAL", "LOWEST") {
         override fun respect() {
-            println("Chor")
+            println("Aryans Invasion")
         }
     }
 }
 
 fun main() {
-    for (i in Color.values()) {
+    for (i in Color.entries) {
         println(i)
     }
     val color = Color.GREEN

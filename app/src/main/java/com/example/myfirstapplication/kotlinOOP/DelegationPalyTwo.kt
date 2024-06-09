@@ -3,7 +3,6 @@ package com.example.myfirstapplication.kotlinOOP
 import kotlin.reflect.KProperty
 
 // Why delegation is needed
-
 class Student {
     // There we are repeating code of setter in variables
     var firstName: String? = null

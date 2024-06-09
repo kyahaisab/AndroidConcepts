@@ -26,7 +26,7 @@ class ArrayUtils1<T>(private val array: Array<T>) {
     }
 }
 
-// Instead of doint it at class leved do it in function level
+// Instead of doing it at class level do it in function level
 fun <M> findIndexFun(array: Array<M>, element: M, callback: (index: Int, value: M?) -> Unit) {
     for (i in array.indices) {
         if (array[i] == element) {
@@ -51,10 +51,21 @@ fun <T, M> M.findIndex(array: Array<T>, ele: T, callback: (T?, Int) -> Unit) {
     return
 }
 
+fun <T, M> M.findIndexOfEle(ele: T, callback: (T, Int) -> Unit) {
+    val array = this as Array<*>
+    for (i in array.indices) {
+        if (array[i] == ele) {
+            callback(ele, i)
+            return
+        }
+    }
+    callback(ele, -1)
+}
+
 
 fun main(args: Array<String>) {
     // Generics
-    // 1. Normal, we canout find string values, its only for integers
+    // 1. Normal, we cannot find string values, its only for integers
     val array = ArrayUtils(arrayOf(1, 2, 3, 4, 5, 6))
     array.findIndex(9) { index, value ->
         println("Index and value is $index $value")
@@ -78,7 +89,11 @@ fun main(args: Array<String>) {
         println("value and Index: $value and $index")
     }
     // setting generics type
-    "Hello World".findIndex<Int, String>(arrayOf(2, 3, 4, 5, 56, 2, 17, 8), 12) { value, index ->
+    "Hello World".findIndex(arrayOf(2, 3, 4, 5, 56, 2, 17, 8), 12) { value, index ->
         println("value and Index: $value and $index")
+    }
+
+    arrayOf(2, 3, 4, 5, 6).findIndexOfEle(2) { ele, index ->
+        println("$ele and $index")
     }
 }

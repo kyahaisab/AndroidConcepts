@@ -15,7 +15,7 @@ class BoxPlay constructor(
     }
 
     // This is secondary constructor, this->is primary constructor
-    constructor(defaultValue: Int) : this(defaultValue, defaultValue, 3){
+    constructor(defaultValue: Int) : this(defaultValue, defaultValue, 3) {
         println("Secondary constructor")
     }
 
@@ -23,6 +23,7 @@ class BoxPlay constructor(
         get() = length * breadth * height
 }
 
+// primary constructor->init block->secondary constructor
 fun main() {
     val box = BoxPlay(7)
     println(box.volume)

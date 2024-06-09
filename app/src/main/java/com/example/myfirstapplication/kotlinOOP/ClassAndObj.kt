@@ -9,24 +9,24 @@ class Box {
     var height: Int = 10
 
     // We can create our custom getter and setter
-    var x:Int?=0
+    var x: Int? = 0
         get() = 10
-        set(value){
-            field=value // field refers to x
+        set(value) {
+            field = value // field refers to x
         }
 
-    val volume:Int
-        get() = breadth*length *height
-        /*set(value) {
-            // We cannot have setter as its val
-        }*/
+    val volume: Int
+        get() = breadth * length * height
+    /*set(value) {
+        // We cannot have setter as its val
+    }*/
 
-    var boxName:String="Box Name"
+    var boxName: String = "Box Name"
         set(value) {
-            if(value.length<3){
+            if (value.length < 3) {
                 println("Name can't be less than 3 characters")
-            }else{
-                field=value
+            } else {
+                field = value
                 println("Box name is set")
             }
         }
@@ -40,10 +40,10 @@ class Box {
     }
 }
 
-fun main(){
-    val box=Box()
+fun main() {
+    val box = Box()
 
-    box.length=23
+    box.length = 23
     println(box.length)
     println(box.breadth)
 
@@ -51,5 +51,5 @@ fun main(){
     box.closeBox()
 
     println(box.volume)
-    box.boxName="ab"
+    box.boxName = "ab"
 }

@@ -50,6 +50,8 @@ fun main(args: Array<String>) {
         val a = 23
         a + x + y
     }
+    val sumValue3 = calculate(3, 6, sumLambda)
+    val sumValue4 = calculate(3, 6, sumLambda1)
 
     val sumValue = calculate(2, 6, { x, y ->
         x + y
@@ -57,8 +59,6 @@ fun main(args: Array<String>) {
     val sumValue1 = calculate(2, 6) { x, y ->
         x + y
     }
-    val sumValue3 = calculate(3, 6, sumLambda)
-    val sumValue4 = calculate(3, 6, sumLambda1)
 
     println("sumvalue 1 2 3 4: $sumValue and $sumValue1 and $sumValue3 and $sumValue4")
 

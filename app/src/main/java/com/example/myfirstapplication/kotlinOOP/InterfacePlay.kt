@@ -1,7 +1,6 @@
 package com.example.myfirstapplication.kotlinOOP
 
 // Interface cannot have init and constructor which abstract can have
-
 abstract class Downloader1{
     init {
         println("Downloader1 initialized")
