@@ -1,5 +1,15 @@
 package com.example.myfirstapplication.amitSekhar.shortQuestions
 
+
+/*
+Compile time refers to the period during which source code is translated into executable code.
+This process is performed by a compiler. The compiler checks the source code for syntax errors.
+e.g., missing semicolons in languages like C or Java, assigning a string to an integer variable.
+
+Runtime refers to the period during which the program is actually executed, after it has been successfully compiled.
+The program's behavior is determined based on input data and conditions encountered during execution.
+eg. Division by zero, Null pointer dereference, File not found errors.
+ */
 object ConstantsOne {
     val NAME = "Sagar"
 }

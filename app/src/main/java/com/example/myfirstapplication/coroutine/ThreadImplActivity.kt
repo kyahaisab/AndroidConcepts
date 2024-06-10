@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.os.AsyncTask
 import android.os.Bundle
 import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import android.view.View
 import android.widget.TextView
@@ -62,7 +63,7 @@ class ThreadImplActivity : AppCompatActivity() {
                         // 2. Looper and handler
                         // So better way is to use looper and handler
                         // Main thread is in constant loop, so we put task(in form of runnable) from background thread to message queue
-                        // of UI thread using Handler. We create another thread from main thread , from the other thread we do some task and
+                        // of UI thread using Handler. We create another thread from main thread, from the other thread we do some task and
                         // update our main thread using handler and put task to main thread in form of runnable
                         handler.post(Runnable {
                             tvResult.text = counter.toString()

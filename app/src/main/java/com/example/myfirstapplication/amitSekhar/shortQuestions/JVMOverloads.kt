@@ -18,4 +18,4 @@ fun main() {
 
 
 // When only onDestroy is called for an activity without onPause() and onStop()?
-// Ans: when we use finish in onCreate block
+// Ans: when we use onFinish() in onCreate block
