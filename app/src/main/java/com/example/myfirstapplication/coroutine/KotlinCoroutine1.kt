@@ -17,11 +17,11 @@ fun main() { // Executes in main thread and statement inside it also runs in mai
         */
 
     // 2. Same as above, doing with coroutine
-    // App will not wait for background co routine, so nothing is printed inside this, we need amke it wait manually. This might be
-    // because it may be running in deamon thread(My guess and logic not sure)
-    GlobalScope.launch {  // Create a background coroutine that runs on background thread
+    // App will not wait for background coroutine, so nothing is printed inside this, we need to make it wait manually. This might be
+    // because it may be running in deamon thread(My guess and logic not sure). Coroutines run on different specialized dispatchers.
+    GlobalScope.launch {  // Create a background coroutine that runs on background thread.
         println("Fake work start: ${Thread.currentThread().name}")
-        //Thread.sleep(1000) // - Important: Now, this Thread.sleep basically blocks the entire thread.So if some other coroutines are
+        // Thread.sleep(1000) // - Important: Now, this Thread.sleep basically blocks the entire thread.So if some other coroutines are
         // operating within the same thread as this coroutine is operating, then it will basically block that other coroutine as well.
         // so use delay instead of sleep
 
@@ -33,7 +33,7 @@ fun main() { // Executes in main thread and statement inside it also runs in mai
     }
 
     // - To make co routine finish its work and main thread to wait
-    //Thread.sleep(2000) // without this, coroutine part is not completed and nothing printed on consol
+    // Thread.sleep(2000) // without this, coroutine part is not completed and nothing printed on console
 
     // runBlocking builder is used to start a coroutine and block the current thread until the coroutine completes.
     // - Alternative of above, because delay can't run on thread, so to use delay use coroutine run blocking

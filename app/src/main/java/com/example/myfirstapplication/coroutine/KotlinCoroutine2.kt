@@ -22,7 +22,7 @@ fun main() {// Execute in main thread
     }
 }*/
 
-// The runBlocking scope will wait for all its child coroutines to complete before it finishes, ensuring proper cleanup except
+// IMP NOTE: The runBlocking scope will wait for all its child coroutines to complete before it finishes, ensuring proper cleanup except
 // Globalscope.launch{} because Glob.. will continue running even if the runBlocking scope completes or is canceled.
 fun main() {
     runBlocking {

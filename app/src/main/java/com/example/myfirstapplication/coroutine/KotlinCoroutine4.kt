@@ -16,15 +16,15 @@ Else if the coroutine is not cooperative then it will wait for the coroutine to 
 
 - It is so frequent that a separate fun is made job.cancelAndJoin()
 
-- What exactly we mean by cooperative?What makes a coroutine cooperative?Well, there are basically two ways to
-make a coroutine cooperative.Now,
+- What exactly we mean by cooperative? What makes a coroutine cooperative?Well, there are basically two ways to
+make a coroutine cooperative.
 *the first way is to periodically invoke a suspending function that checks for
 cancellation. And only those suspending functions which belong to kotlinx.coroutines package will make your
 coroutine cooperative and therefore cancellable.For example, the functions like delay, yield etc are the suspending
 functions which belong to that package.And if you use these functions in your coroutine, then your coroutine will become
-cooperative and therefore it can be cancelled by calling the cancel function
-
+cooperative and therefore it can be cancelled by calling the cancel function.
 * Using isActive
+
 */
 
 /*fun main() {
