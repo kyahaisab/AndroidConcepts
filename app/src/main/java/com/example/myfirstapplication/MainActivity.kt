@@ -15,6 +15,7 @@ class MainActivity : ComponentActivity() {
     private lateinit var looperHandlerButton: Button
     private lateinit var learnCoroutineButton: Button
     private lateinit var diTestingButton: Button
+    private lateinit var recyclerViewTesting: Button
 
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,6 +26,7 @@ class MainActivity : ComponentActivity() {
         looperHandlerButton = findViewById(R.id.customLooperAndHandler)
         learnCoroutineButton = findViewById(R.id.coroutineTesting)
         diTestingButton = findViewById(R.id.diTesting)
+        recyclerViewTesting = findViewById(R.id.recyclerView)
 
         setViews()
     }
@@ -41,6 +43,9 @@ class MainActivity : ComponentActivity() {
         }
         diTestingButton.click {
             startActivity(Intent(this, BaseDIActivity::class.java))
+        }
+        recyclerViewTesting.click {
+            startActivity(Intent(this, MainActivity2::class.java))
         }
     }
 }
