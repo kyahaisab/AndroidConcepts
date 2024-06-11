@@ -33,7 +33,7 @@ object MySingleton {
     }
 }
 
-If MySingleton holds a reference to an Activity, and the Activity is destroyed (like during a configuration change),
+If MySingleton holds a reference to an Activity, and the Activity is destroyed (like during a configuration change, new instance is created),
 the Activity object won't be garbage collected because it's still referenced by the singleton.
  */
 
