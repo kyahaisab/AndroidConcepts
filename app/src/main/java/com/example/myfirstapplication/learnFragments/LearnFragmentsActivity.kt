@@ -17,6 +17,7 @@ class LearnFragmentsActivity : AppCompatActivity() {
     addToBackstack: Its a stack, it give activity like action of going back to previous fragment.
                     If not used activity hosting fragment will go back
     Also covered Animations in fragments while adding,replace
+    Also implemented single task launch mode
      */
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,18 +26,34 @@ class LearnFragmentsActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.fragmentOne.click {
-            val fragment = FirstFragment()
-            supportFragmentManager.beginTransaction()
-                .setCustomAnimations(R.anim.slide_in_bottom, R.anim.slide_out_top, R.anim.slide_in_top, R.anim.slide_out_bottom)
-                .add(R.id.fragment_container, fragment, "FIRST_FRAGMENT_TAG")
-                .addToBackStack("FIRST_FRAGMENT_TAG")
-                .commit()
+            val existingFragment = supportFragmentManager.findFragmentByTag("FIRST_FRAGMENT_TAG")
+            // Managing single task launch mode
+            if (existingFragment != null) {
+                supportFragmentManager.popBackStack("FIRST_FRAGMENT_TAG", 0)
+            } else {
+                val fragment = FirstFragment()
+                supportFragmentManager.beginTransaction()
+                    .setCustomAnimations(
+                        R.anim.slide_in_bottom,
+                        R.anim.slide_out_top,
+                        R.anim.slide_in_top,
+                        R.anim.slide_out_bottom
+                    )
+                    .add(R.id.fragment_container, fragment, "FIRST_FRAGMENT_TAG")
+                    .addToBackStack("FIRST_FRAGMENT_TAG")
+                    .commit()
+            }
         }
         // Example of replacing a fragment on button click
         binding.fragmentTwo.setOnClickListener {
             val newFragment = SecondFragment()
             supportFragmentManager.beginTransaction()
-                .setCustomAnimations(R.anim.slide_in_bottom, R.anim.slide_out_top, R.anim.slide_in_top, R.anim.slide_out_bottom)
+                .setCustomAnimations(
+                    R.anim.slide_in_bottom,
+                    R.anim.slide_out_top,
+                    R.anim.slide_in_top,
+                    R.anim.slide_out_bottom
+                )
                 .add(R.id.fragment_container, newFragment, "SECOND_FRAGMENT_TAG")
                 .addToBackStack("SECOND_FRAGMENT_BACKSTACK")
                 .commit()
