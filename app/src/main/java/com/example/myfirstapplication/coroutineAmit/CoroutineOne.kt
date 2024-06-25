@@ -2,15 +2,9 @@ package com.example.myfirstapplication.coroutineAmit
 
 import android.os.Bundle
 import android.util.Log
-import android.view.View
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.lifecycleScope
-import androidx.transition.Visibility
-import com.example.myfirstapplication.R
-import com.example.myfirstapplication.click
+import com.example.myfirstapplication.utils.click
 import com.example.myfirstapplication.databinding.ActivityCoroutineOneBinding
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.CoroutineScope

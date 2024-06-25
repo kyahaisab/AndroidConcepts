@@ -1,4 +1,4 @@
-package com.example.myfirstapplication
+package com.example.myfirstapplication.recyclerViews
 
 data class Item(
     val type: ItemType,
