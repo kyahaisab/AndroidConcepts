@@ -3,6 +3,8 @@ package com.example.myfirstapplication.amitSekhar.shortQuestions
 /*
 Structural Equality(==): It checks for equals(), meaning it compares the contents of two objects to see if they are equivalent.
 Referential Equality(===): It checks whether two references point to same object
+Note: equals() method in Kotlin checks for referential equality
+      (i.e., whether the two references point to the same object) unless it is overridden.
  */
 
 internal class CarsOne(var color: String)

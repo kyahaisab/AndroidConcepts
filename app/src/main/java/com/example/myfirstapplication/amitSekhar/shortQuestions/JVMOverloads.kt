@@ -1,5 +1,8 @@
 package com.example.myfirstapplication.amitSekhar.shortQuestions
 
+
+// You can use this with class and functions both
+
 internal class Sessions(val name: String, val date: String = "23/12/2024")
 
 internal class SessionCall @JvmOverloads constructor( // becz internally it will generate overloads for us
@@ -7,12 +10,19 @@ internal class SessionCall @JvmOverloads constructor( // becz internally it will
     val date: String = "23/12/2024"
 )
 
+class SessionCallOne {
+    @JvmOverloads
+    fun printCarInfo(color: String = "RED", model: String = "Sedan") {
+        println("Car color: $color, model: $model")
+    }
+}
+
 fun main() {
     val session1 = Sessions("Sagar") // one can leave date assign, as it is default assign
     // But, say one wants call this code from java class val session2=new Sessions("Sagar") it will through error
 
     // now one can use SessionCall default param advantage
-    val sessionCall=SessionCall("Ramu")
+    val sessionCall = SessionCall("Ramu")
     // Also one can call this from java class sessionsCall=new SessionCall("Ramu") it works perfectly fine
 }
 

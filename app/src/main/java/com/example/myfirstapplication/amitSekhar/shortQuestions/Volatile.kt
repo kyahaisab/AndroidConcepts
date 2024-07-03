@@ -27,5 +27,13 @@ class User implements Serializable {
     deserializeData()
 
  }
- When object is deserialized, the username field is restored, but the password field is not. It will be set to null (or the default value if it were a primitive type).
+ When object is deserialized, the username field is restored, but the password field is not.
+ It will be set to null (or the default value if it were a primitive type).
+
+ **Uses**
+ -Sensitive Information: You might not want to serialize fields that contain sensitive information,
+  such as passwords or personal data.
+ -Temporary Data: Fields that store temporary data or cache information that does not need to be
+  persisted can be marked as transient.
+ -Derived Information: Fields whose values can be derived from other fields can be excluded from serialization to save space.
  */
