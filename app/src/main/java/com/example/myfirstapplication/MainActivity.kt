@@ -24,11 +24,13 @@ class MainActivity : BaseActivity() {
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         val splashScreen = installSplashScreen()
+        // Animation will work only for android 12 devices and above
         var isTaskCompleted = false
         Handler(Looper.getMainLooper()).postDelayed({
             isTaskCompleted = true
         }, 1000)
         splashScreen.setKeepVisibleCondition() {
+            // Update it when when model live data is loading simply
             !isTaskCompleted
         }
 
