@@ -1,0 +1,7 @@
+Link: https://www.youtube.com/watch?v=2xoJi-ZHmNI
+
+1. Create account in firebase->create new project and select Android->enter package name->download
+   configuration file->copy paste this in your project app level->also add dependencies.
+2. In your project open firebase from tools->then add FCM to your app.
+3. Create a class for firebaseMessaging Service and xml file as well also this in your manifest file as well.
+4. Write code in above class and finally send notification from firebase to your apps.
