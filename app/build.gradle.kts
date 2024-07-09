@@ -76,4 +76,6 @@ dependencies {
 
     implementation("com.google.dagger:dagger:2.47")
     kapt("com.google.dagger:dagger-compiler:2.47")
+
+    implementation("androidx.core:core-splashscreen:1.0.0-alpha01")
 }
