@@ -17,8 +17,8 @@ fun main() { // Executes in main thread and statement inside it also runs in mai
         */
 
     // 2. Same as above, doing with coroutine
-    // App will not wait for background coroutine, so nothing is printed inside this, we need to make it wait manually. This might be
-    // because it may be running in deamon thread(My guess and logic not sure). Coroutines run on different specialized dispatchers.
+    // App will not wait for GlobalScope coroutine, so nothing is printed inside this, we need to make it wait manually. This is
+    // exception case with GlobalScope, in others like launch{} it will wait. Coroutines run on different specialized dispatchers.
     GlobalScope.launch {  // Create a background coroutine that runs on background thread.
         println("Fake work start: ${Thread.currentThread().name}")
         // Thread.sleep(1000) // - Important: Now, this Thread.sleep basically blocks the entire thread.So if some other coroutines are
@@ -26,7 +26,7 @@ fun main() { // Executes in main thread and statement inside it also runs in mai
         // so use delay instead of sleep
 
         delay(1000) // - This(delay-a suspend fun) will not block the thread where this coroutine is working, so other coroutine working on this thread are
-        // working and only our desired coroutine gets block
+        // working and only our desired coroutine gets block. Line of code after this delay will execute after 1000 ms
         // - Say this coroutine stared in thread T1 and after sleep it will again start on same thread T1, but with delay it may oe may not start on T1, because T1
         // is freed from this coroutine and T1 might get involved in some other work.
         println("Fake work completed: ${Thread.currentThread().name}")

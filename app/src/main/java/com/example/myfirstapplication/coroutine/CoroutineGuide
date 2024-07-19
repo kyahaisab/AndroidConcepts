@@ -7,10 +7,14 @@ Link: https://www.youtube.com/watch?v=lmRzRKIsn1g&t=156s
    the main thread. Too many thread can also crash your aap with out of memory.Because creating threads is very very expensive.
    And if you create more and more threads, then there would be a time when your device will run out of memory.
    And eventually once again your app will shut down.
-3. So say hello to coroutines.When you use coroutines then you don't have to create so many threads for each operation.
+
+3. If we run some heavy task in main thread, app will crash, also if we update tv(created in UI thread) is updated in some other
+   thread, then it will give exceptions or synchronisation issue
+
+4. So say hello to coroutines.When you use coroutines then you don't have to create so many threads for each operation.
    Instead You can have just one background thread And on this thread, you can launch coroutines.
    Such as launch a coroutine to perform File UploadLaunch another coroutine on the same background thread
    to perform some network operations. Like threads, coroutines can run in parallel, wait for each other to finish,
    and even communicate with each other.But remember coroutines are not threads.
 
-4. Then go to coroutineAmit
+5. Then go to coroutineAmit

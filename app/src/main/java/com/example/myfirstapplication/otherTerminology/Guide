@@ -1,0 +1,7 @@
+/*
+1. JVM will not wait for demon thread to complete work, so to overcome this use threadOne.join()
+   join() method wait for a thread to finish its execution before continuing with the current thread.
+
+2. Unlike onCreate(), onRestoreInstanceState() is not used for initializing the activity's UI or setting up event listeners
+   This method is used to restore non-UI state, such as variables or data
+ */

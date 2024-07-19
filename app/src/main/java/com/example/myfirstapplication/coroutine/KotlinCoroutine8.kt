@@ -7,7 +7,6 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 
 /*
-
 // Every coroutine has its own CoroutineScope instance attached to it.
 fun main() {
     runBlocking {

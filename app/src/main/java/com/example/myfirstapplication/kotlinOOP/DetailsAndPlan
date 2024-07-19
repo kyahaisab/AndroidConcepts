@@ -5,3 +5,7 @@ see Belel list, the way he proceeded in his videos
 Order:
 class obj-> visibility modifier-> constructor->inheritance->abstract->interface->Inner class and Anonymous class->Lambda
 delegation-> companion object ->generics ->data class->enum->sealed class->extension->scope fun->collection->exception handling
+
+Abstract class can have-> constructor, init, normal function inside it, open function inside it,
+               and inherited like this abstract B{} | class A:B(){}
+Interface -> normal function inside it, and used like interface A{} | class B:A{}

@@ -37,6 +37,7 @@ class ThreadImplActivity : AppCompatActivity() {
         handler = Handler(applicationContext.mainLooper)
     }
 
+    // Controlled from view
     fun startThreadFunction(view: View) {
         /*
          // Running in UI Thread so it will block the thread and crash, it is resource intensive operation
@@ -47,7 +48,6 @@ class ThreadImplActivity : AppCompatActivity() {
              Log.d("Threads", Thread.currentThread().id.toString())
          }*/
         /*
-
                 thread {
                     stopLoop = true
                     while (stopLoop) {
