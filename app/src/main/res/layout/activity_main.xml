@@ -27,4 +27,10 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:text="Learn Services" />
+
+    <Button
+        android:id="@+id/workManagerTesting"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:text="Learn Work Manager" />
 </LinearLayout>

@@ -9,12 +9,14 @@ import com.example.myfirstapplication.coroutine.CustomLooperHandlerActivity
 import com.example.myfirstapplication.coroutine.ThreadImplActivity
 import com.example.myfirstapplication.coroutineAmit.CoroutineOne
 import com.example.myfirstapplication.servicesProject.BaseServiceActivity
+import com.example.myfirstapplication.workManager.WorkerHandlerActivity
 
 class MainActivity : ComponentActivity() {
     private lateinit var startThreadButton: Button
     private lateinit var looperHandlerButton: Button
     private lateinit var learnCoroutineButton: Button
     private lateinit var learnServices: Button
+    private lateinit var learnWorkManager: Button
 
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,6 +27,7 @@ class MainActivity : ComponentActivity() {
         looperHandlerButton = findViewById(R.id.customLooperAndHandler)
         learnCoroutineButton = findViewById(R.id.coroutineTesting)
         learnServices = findViewById(R.id.serviceTesting)
+        learnWorkManager = findViewById(R.id.workManagerTesting)
 
         setViews()
     }
@@ -41,6 +44,9 @@ class MainActivity : ComponentActivity() {
         }
         learnServices.click {
             startActivity(Intent(this, BaseServiceActivity::class.java))
+        }
+        learnWorkManager.click {
+            startActivity(WorkerHandlerActivity.getWorkerHandlerIntent(this))
         }
     }
 }
