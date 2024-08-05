@@ -1,11 +1,17 @@
 package com.example.myfirstapplication.kotlinOOP
 
+open class DogRamu(val dogName: String) {
+    fun bark(): Int {
+        println("Bhau Bhau Bhau")
+        return 1
+    }
+}
+
 // One cannot have instance of abstract class
-abstract class BasicMachine(private var name: String) {
+abstract class BasicMachine(private var name: String) : DogRamu("Ramu") {
     abstract var brand: String
-
     abstract fun makeCoffee(): String
-
+    val barkNoise = bark()
     fun coffeeDetails(): String {
         return "Machine name is $name"
     }
@@ -20,6 +26,7 @@ class DesiCoffee(private val nameBrand: String) : BasicMachine(nameBrand) {
         get() = "MODE"
         set(value) {}
 
+    val coffeeDetail = coffeeDetails()
     override fun makeCoffee(): String {
         return "Done making coffee"
     }

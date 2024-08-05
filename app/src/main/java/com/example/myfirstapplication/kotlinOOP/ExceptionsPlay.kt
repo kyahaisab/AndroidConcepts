@@ -2,7 +2,9 @@ package com.example.myfirstapplication.kotlinOOP
 
 
 // Writing custom exceptions
-class IllegalAgeException(message: String) : Exception(message)
+class IllegalAgeException(message: String) : Exception(message) {
+    val exceptionDetail: String = "This is an illegal and lethal exception"
+}
 
 fun voterDetails(name: String, age: Int) {
     if (age < 18) throw IllegalAgeException("Age is less than 18") // It will be catch at catch block
@@ -17,6 +19,7 @@ fun main() {
     // If not sure which exception to catch, just use e:Exception
     catch (e: IllegalAgeException) {
         println(e.message)
+        println(e.exceptionDetail)
         println(e.stackTrace)
     }
 
