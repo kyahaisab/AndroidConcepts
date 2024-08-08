@@ -41,6 +41,24 @@ fun main() {
 
     sq?.let { square = it } // Using null safety
 
+/*                         -----------------IMPORTANT---------------
+****************************************************************************************************
+    val sqr1 = Square(11, 19, "9XPX", "Blood").let {                                               *
+        it.width = 22                                                                              *
+        // Below, if any assignment or some print statements then Unit will be returned            *
+        // eg. it.name = "Kal" or println("LoP"), etc then unit will be assigned to sqr1           *
+        println("Hello Nothing")                                                                   *
+    }                                                                                              *
+    println(sqr1)                                                                                  *
+                                                                                                   *
+    // Case: when we use null safety and we want some default initialisation                       *
+    val squareObject: Square? = null                                                               *
+    val sqr2 = squareObject?.let {                                                                 *
+        it.width = 23                                                                              *
+    } ?: "BIG DAWGS"                                                                               *
+    println(sqr2)                                                                                  *
+****************************************************************************************************
+*/
     // *** run:
     val sq1 = Square(13, 19, "Cube", "Maroon").run {
         this.fillColor("ORANGE")

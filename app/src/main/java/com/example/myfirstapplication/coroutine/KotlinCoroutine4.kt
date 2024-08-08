@@ -16,7 +16,7 @@ Else if the coroutine is not cooperative then it will wait for the coroutine to 
 
 - It is so frequent that a separate fun is made job.cancelAndJoin()
 
-- What exactly we mean by cooperative? What makes a coroutine cooperative?Well, there are basically two ways to
+- What exactly we mean by cooperative? What makes a coroutine cooperative? Well, there are basically two ways to
 make a coroutine cooperative.
 *the first way is to periodically invoke a suspending function that checks for
 cancellation. And only those suspending functions which belong to kotlinx.coroutines package will make your

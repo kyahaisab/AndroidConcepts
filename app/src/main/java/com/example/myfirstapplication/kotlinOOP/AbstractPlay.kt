@@ -1,7 +1,7 @@
 package com.example.myfirstapplication.kotlinOOP
 
 open class DogRamu(val dogName: String) {
-    fun bark(): Int {
+    open fun bark(): Int {
         println("Bhau Bhau Bhau")
         return 1
     }
@@ -18,6 +18,10 @@ abstract class BasicMachine(private var name: String) : DogRamu("Ramu") {
 
     open fun makingTime() {
         println("@0 mins only")
+    }
+
+    override fun bark(): Int {
+        return 100
     }
 }
 

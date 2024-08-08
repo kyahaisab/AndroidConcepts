@@ -9,6 +9,10 @@ fun generateNumbers(range: IntRange, times: Int, callback: (Int) -> Unit) {
     }
 }
 
+fun formReturnLambdaFunction(x: Int, callback1: (Int, Int) -> Int): (Int, Int) -> Int {
+    return callback1
+}
+
 fun getNumberFromServer(a: Int, callback: (Int) -> Unit): String {
     thread {
         Thread.sleep(1000)
